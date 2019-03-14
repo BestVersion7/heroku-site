@@ -1,0 +1,17 @@
+@import 'helpers/mediaquery';
+
+.header-container{
+	font-family: Verdana;
+	color:rgb(170, 205, 211);
+	background: url("http://www.stevenagetowncentre.com/media/1167/stc-shops-header.jpg?anchor=center&mode=crop&rnd=131421049060000000&quality=85&width=1366&height=440");
+	height: 4em;
+	.header-container-text {
+		margin: 0 1rem;
+		text-decoration: underline;
+		font-weight: bold
+	}
+}
+
+.page-container {
+	margin: 0 2.5%
+}

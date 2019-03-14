@@ -1,0 +1,42 @@
+@import '/components/buttons';
+@import '/layout/grid';
+@import '/components/images';
+@import '/components/textAreas';
+@import '/components/navbar';
+
+.message-appear {
+    color: red;
+    font-style: italic;
+    position: absolute;
+    left: -10em;
+}
+
+.message-appear-active {
+    transition: 500ms linear;
+    color: blue;
+    left: 0em
+}
+
+.message-enter-done {
+    font-style: italic;
+    background: rgb(86, 219, 219);
+    transition: 1s ease
+}
+
+.zoom-enter {
+    font-size: 2em
+};
+
+.zoom-enter-active {
+    transition: 300ms ease-in;
+    font-size: 1em
+};
+
+.zoom-exit {
+    font-size: 1em;
+};
+.zoom-exit-active {
+    font-size: 1.5em;
+    opacity: 0;
+    transition: 300ms ease;
+};

@@ -1,0 +1,10 @@
+@import 'helpers/mediaquery';
+
+textarea {
+    resize: none;
+    width: 90%;
+    height: 5em;
+    @include media-query (30em) {
+        width: 50%
+    }
+}
