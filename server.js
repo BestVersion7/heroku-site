@@ -26,17 +26,18 @@ mongoose.connect(db, {
 })
 .then(console.log('mongoose running'))
 
-//link that comes here goes to the routes
+//Express routes
 app.use('/api/food', foodrouter)
 app.use('/api/movie',movieRouter)
 app.use('/user', userRouter)
-app.get('/justin', (req, res) => {
-    res.redirect('/api/food')
-})
+
 //serve static assets if in production
 if(process.env.NODE_ENV === 'production'){
     //set static folder
     app.use(express.static('client/build'));
+    app.get('/robots.txt', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'robots.txt'));
+    });
     app.get('*',(req, res) => {
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     });
