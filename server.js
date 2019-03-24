@@ -4,9 +4,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
-const dotenv = require('dotenv')
-
-dotenv.config()
+require('dotenv').config()
 
 const app = express();
 const foodrouter = require('./api/routes/food');
@@ -35,9 +33,9 @@ app.use('/user', userRouter)
 if(process.env.NODE_ENV === 'production'){
     //set static folder
     app.use(express.static('client/build'));
-    app.get('/robots.txt', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'client', 'build', 'robots.txt'));
-    });
+    // app.get('/robots.txt', (req, res) => {
+    //     res.sendFile(path.resolve(__dirname, 'client', 'build', 'robots.txt'));
+    // });
     app.get('*',(req, res) => {
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     });
@@ -50,3 +48,4 @@ const port = process.env.PORT || 4000;
 app.listen(port, () => {
     console.log(`Server is on ${port}`)
 })
+

@@ -7,7 +7,7 @@ const userController = require('../controllers/user')
 router.get('/', userController.user_all)
 router.post('/signup', userController.signup_user)
 router.post('/login', userController.login_user)
-router.get('/all', verifyToken, userController.secret)
+router.get('/all', verifyToken, userController.user_all)
 router.delete('/delete', verifyToken, userController.clear_database)
 
 module.exports = router

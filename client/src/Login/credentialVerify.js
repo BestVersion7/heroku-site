@@ -16,18 +16,3 @@ export const CredentialFail = () => {
         
     )
 }
-
-export const CredentialSuccess = () => {
-    return (
-        <CSSTransition
-            classNames="message"
-            timeout={500}
-            in={true}
-            appear={true}
-        >
-            <div>
-                Success! 
-            </div>
-        </CSSTransition>
-    )
-}

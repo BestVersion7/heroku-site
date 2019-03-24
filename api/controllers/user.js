@@ -6,7 +6,7 @@ exports.user_all = (req, res, next) => {
     User.find()
     .select("username password")
     .then(item => res.send(item))
-    .catch(err => res.send(err.message))
+    .catch(err => res.status(500).send(err.message))
 }
 
 exports.secret = (req, res, next) => {
