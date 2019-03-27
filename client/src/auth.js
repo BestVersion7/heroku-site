@@ -1,4 +1,5 @@
 import axios from 'axios'
+import jwt from 'jsonwebtoken'
 
 export const auth = {
     setToken(res) {
@@ -9,6 +10,11 @@ export const auth = {
     getToken() {
         const token = localStorage.getItem('jwt_token')
         axios.defaults.headers.Authorization = token
+    },
+    getPayloadUsername() {
+        const token = localStorage.getItem('jwt_token').split(" ")[1]
+        const {username} = jwt.decode(token)
+        return username
     },
     signout() {
         localStorage.removeItem('jwt_token')

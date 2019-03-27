@@ -28,7 +28,7 @@ exports.signup_user = (req, res, next) => {
                     username: req.body.username,
                     password: hash
                 })
-                .then(item => res.send('Success'))
+                .then(item => res.status(201).send('Success'))
                 .catch(err => res.status(500).send(err.message))
             }
         })
@@ -68,4 +68,3 @@ exports.clear_database = (req, res, next) => {
     User.deleteMany()
     .then(item => res.send('Deleted all records'))
 }
-

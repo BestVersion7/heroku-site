@@ -6,8 +6,7 @@ export default () => {
     return (
         <div className="page-container">
             <h3 style={{ 'color': 'purple' }}>Ongoing Full Stack Site</h3>
-            <Signup />
-            <Login />
+            27/03/19: Working on multer and mapping database images
         </div>
     )
 }

@@ -18,7 +18,6 @@ export function PrivateRoute({ component: Component, ...rest }) {
   useEffect(() => {
     validateToken()
   }, [])
-
   return (
       <Route
         {...rest}

@@ -3,10 +3,10 @@ import {CredentialFail} from './credentialVerify'
 import {auth} from '../auth'
 import {Redirect} from 'react-router-dom'
 import axios from 'axios';
- 
+
 export default () => {
-    const [username, setUsername] = useState('fast')
-    const [password, setPassword] = useState('fast')
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
     const [credFail, setCredFail] = useState(false)
     const [redirectPage, setRedirectPage] = useState(false)
 
@@ -17,7 +17,10 @@ export default () => {
             auth.setToken(res)
             setRedirectPage(true)
         }) 
-        .catch(() => setRedirectPage(false))
+        .catch(() => {
+            setRedirectPage(false)
+            setCredFail(true)
+        })
     }
     const handleUsernameChange = e => {
         e.preventDefault()
@@ -29,26 +32,19 @@ export default () => {
         setPassword(e.target.value)
         setCredFail(false)
     }
-    const handleLogout = () => {
-        localStorage.removeItem('jwt_token')
-        setCredFail(false)
-    }
 
-    if(redirectPage) return <Redirect to={'/film'} />
-
+    if(redirectPage) return <Redirect to = '/film' />
     return (
         <div>
             <h2>Login Page</h2>
-
                 <form onSubmit={handleLogin}>
                     <label>Username</label>
-                    <input value={username} onChange = {handleUsernameChange}/> <br />
+                    <input onChange = {handleUsernameChange}/> <br />
                     <label>Password </label>
-                    <input value = {password} type="password" onChange = {handlePasswordChange}/> <br />
+                    <input type="password" onChange = {handlePasswordChange}/> <br />
                     <button> Login </button>
                 </form>
-           
-            <button onClick = {handleLogout}>Logout</button>
+                LOGIN TO SEE A HIDDEN PAGE!
             <div style={{'height':'1em'}}>           
                 {credFail && <CredentialFail />}
             </div>

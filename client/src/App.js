@@ -6,6 +6,7 @@ import Login from './Routes/login';
 import {PrivateRoute} from './Routes/PrivateRoute'
 import { NavLink, Switch, Route, Redirect, BrowserRouter as Router } from 'react-router-dom'
 import Film from './Routes/film';
+import Signup from './Routes/signup'
 
 const App = () => {
   return (
@@ -27,17 +28,23 @@ const App = () => {
             <NavLink
               className="nav-link" 
               activeStyle={styles.activeLink}
-              to='/forms'
-            >Forms</NavLink>
+              to='/signup'
+            >Signup</NavLink>
             <NavLink
               className="nav-link" 
               activeStyle={styles.activeLink}
+              to='/forms'
+            >Database</NavLink>
+            {/* <NavLink
+              className="nav-link" 
+              activeStyle={styles.activeLink}
               to='/film'
-            >Film</NavLink>
+            >Film</NavLink> */}
           </nav>
 
           <Switch>
             <Route path='/' exact component={Home} />
+            <Route path='/signup' component={Signup} />
             <Route path='/login' component={Login} />
             <Route path='/forms' component={Forms} />
             <PrivateRoute path='/film' component={Film} />
