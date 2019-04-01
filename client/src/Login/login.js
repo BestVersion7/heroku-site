@@ -10,7 +10,7 @@ export default () => {
     const [credFail, setCredFail] = useState(false)
     const [redirectPage, setRedirectPage] = useState(false)
 
-    const handleLogin = (e) => {
+    const handleLogin = e => {
         e.preventDefault()
         axios.post('/user/login', {username, password})
         .then(res => {

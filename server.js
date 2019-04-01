@@ -26,7 +26,7 @@ mongoose.connect(db, {
 
 //Express routes
 app.use('/api/food', foodrouter)
-app.use('/api/movie',movieRouter)
+app.use('/api/movie', movieRouter)
 app.use('/user', userRouter)
 
 //serve static assets if in production
@@ -37,6 +37,8 @@ if(process.env.NODE_ENV === 'production'){
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     });
 }
+
+app.use('/uploads', express.static('uploads'))
 
 //Server port
 const port = process.env.PORT || 4000;
