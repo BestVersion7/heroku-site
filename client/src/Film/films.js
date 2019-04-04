@@ -39,6 +39,7 @@ const Film =  () => {
               onClick = {handleSignout}
             >Signout </button>
           <h2> Hidden Content </h2>
+          04/04/19: Something wrong with this (working)
           <FilmsUpload handleShowData={handleShowData}/>
           
           <TransitionGroup className="gallery-container">
