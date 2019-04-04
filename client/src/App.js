@@ -46,7 +46,7 @@ const App = () => {
             <Route path='/forms' component={Forms} />
             <PrivateRoute path='/film' component={Film} />
             <Route path='/about' component={About} />
-            <Route path='/secret' component={Secret} />            
+            {/* <Route path='/secret' component={Secret} />             */}
             <Redirect to='/' />
           </Switch>
         </div>
