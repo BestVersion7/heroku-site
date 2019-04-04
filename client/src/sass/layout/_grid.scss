@@ -14,3 +14,19 @@
 .page-container {
 	margin: 0 2.5%
 }
+
+.gallery-container {
+	display: grid;
+	grid-template: 1fr/ repeat(1, auto);
+	grid-gap: 1em;
+	@include media-query(25em) {
+		grid-template: 1fr/ repeat(2, auto);
+	};
+	@include media-query(50em) {
+		grid-template: 1fr/ repeat(3, auto);
+	};
+	@include media-query(75em) {
+		grid-template: 1fr/ repeat(4, auto);
+	}
+}
+

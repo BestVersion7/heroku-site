@@ -10,7 +10,7 @@ export function PrivateRoute({ component: Component, ...rest }) {
   //run through server verification and if validates, then proceeds
   const validateToken = async () => {
     try {
-      await axios.get('/user/all', auth.getToken())
+      await axios.get('/api/user/all', auth.getToken())
     } catch {
       setToken(false)
     }

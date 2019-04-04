@@ -1,12 +1,15 @@
 const express = require('express');
 const router = express.Router();
+const verifyToken = require('../middleware/verifyToken')
 
 //Food Router
 const Food = require('../models/food');
 
 //GET
 router.get('/', (req, res, next) => {
-    Food.find().then(items => res.json(items))
+    Food.find()
+    .then(items => res.send(items))
+    .catch(err => res.status(500).send('err'))
 })
 
 //POST

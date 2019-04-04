@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import axios from 'axios'
-import Gallery from '../Secret/Gallery'
 import {auth} from '../auth'
 
 export default () => {
@@ -24,13 +23,10 @@ export default () => {
 
     return (
         <div className="page-container">
+            27/03/19: Multer
             <form 
                 onSubmit = {handleSubmit}
             >
-                {/* <input 
-                    name="title"
-                    type="text"
-                />   */}
                 <input 
                     name="movie"
                     type="file" 
@@ -38,9 +34,6 @@ export default () => {
                 />
                 <button>Submit</button>
             </form>
-            <h3 style={{ 'color': 'purple' }}>Ongoing Full Stack Site</h3>
-            27/03/19: Working on multer and mapping database images
-            <Gallery />
         </div>
     )
 }

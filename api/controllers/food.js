@@ -19,7 +19,7 @@ exports.create_food = (req, res, next) => {
             return res.status(409).send('Exists')
         }
         Food.create(req.body) 
-        .then(newFood => res.send('Success'))
+        .then(() => res.send('Success'))
         .catch(err => res.status(500).send(err.message))
     })
 }

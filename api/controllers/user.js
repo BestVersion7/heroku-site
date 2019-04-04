@@ -9,10 +9,6 @@ exports.user_all = (req, res, next) => {
     .catch(err => res.status(500).send(err.message))
 }
 
-exports.secret = (req, res, next) => {
-    res.send("Exploding Kittens!")
-}
-
 exports.signup_user = (req, res, next) => {
     User.find({username: req.body.username})
     // username is taken

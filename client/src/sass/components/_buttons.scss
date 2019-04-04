@@ -9,3 +9,15 @@ button {
     font-weight: bold;
     border: solid black;
 }
+
+.redirect-link-button {
+    background: transparent;
+    color: blue;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+    font-style: italic;
+    &:hover {
+        background: darkgray
+    }
+}

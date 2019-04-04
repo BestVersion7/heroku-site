@@ -5,11 +5,11 @@ const movieSchema = new Schema({
     title: {
         type: String, 
         trim: true,
-        default: "friends",
-        minlength: 3
+        default: "friends"
     },
     picture: {
-        type: String
+        type: String,
+        required: true
     },
     date: {
         type: Date,

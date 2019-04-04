@@ -1,9 +1,8 @@
 const Movie = require('../models/movie')
-const path = require('path')
+const fs = require('fs')
 
 exports.FetchAll = (req, res) => {
     Movie.find()
-    // .select('picture')
     .then(item => res.send(item))
     .catch(err => res.status(404).send(err))
 }
@@ -19,6 +18,23 @@ exports.UploadImage = (req, res) => {
 
 exports.Deleteall = (req, res) => {
     Movie.deleteMany()
-    .then(() => res.send('success'))
-    .catch(err => res.send(err))
+    .then(() => res.send('deleted all records'))
+    .catch(err => res.status(500).send(err))
+}
+
+exports.DeleteImage = (req, res) => {
+    Movie.findByIdAndDelete(req.params.id)
+    .then(item => {
+        if(item === null) {
+            return res.status(500).send('fail')
+        } else {
+            res.status(204).send('deleted')
+            fs.unlink(item.picture, err => {
+                if(err) {
+                    return
+                }
+            })
+        }
+    })
+    .catch(() => res.status(500).send('failed'))
 }

@@ -9,10 +9,11 @@ export default () => {
     const [password, setPassword] = useState('')
     const [credFail, setCredFail] = useState(false)
     const [redirectPage, setRedirectPage] = useState(false)
+    const [redirectSignup, setRedirectSignup] = useState(false)
 
     const handleLogin = e => {
         e.preventDefault()
-        axios.post('/user/login', {username, password})
+        axios.post('/api/user/login', {username, password})
         .then(res => {
             auth.setToken(res)
             setRedirectPage(true)
@@ -34,9 +35,12 @@ export default () => {
     }
 
     if(redirectPage) return <Redirect to = '/film' />
+    if(redirectSignup) return <Redirect to = '/signup' />
+
     return (
         <div>
             <h2>Login Page</h2>
+            LOGIN TO SEE A HIDDEN PAGE!
                 <form onSubmit={handleLogin}>
                     <label>Username</label>
                     <input onChange = {handleUsernameChange}/> <br />
@@ -44,7 +48,12 @@ export default () => {
                     <input type="password" onChange = {handlePasswordChange}/> <br />
                     <button> Login </button>
                 </form>
-                LOGIN TO SEE A HIDDEN PAGE!
+                <button 
+                className="redirect-link-button"
+                onClick={() =>setRedirectSignup(true)}>
+                    Don't have an account? Sign up here!
+                </button>
+                <br />
             <div style={{'height':'1em'}}>           
                 {credFail && <CredentialFail />}
             </div>

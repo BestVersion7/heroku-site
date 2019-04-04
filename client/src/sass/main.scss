@@ -40,3 +40,18 @@
     opacity: 0;
     transition: 300ms ease;
 };
+
+.fade-enter {
+    opacity: 0.01
+}
+.fade-enter-active {
+    transition: 300ms ease;
+    opacity: 1
+}
+.fade-exit {
+    opacity: 1
+}
+.fade-exit-active {
+    transition: 300ms linear;
+    opacity: 0
+}

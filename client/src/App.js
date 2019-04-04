@@ -7,6 +7,8 @@ import {PrivateRoute} from './Routes/PrivateRoute'
 import { NavLink, Switch, Route, Redirect, BrowserRouter as Router } from 'react-router-dom'
 import Film from './Routes/film';
 import Signup from './Routes/signup'
+import Secret from './Routes/secret'
+import About from './Routes/about'
 
 const App = () => {
   return (
@@ -20,21 +22,16 @@ const App = () => {
               activeStyle={styles.activeLink}
               to='/' exact
             >Home</NavLink>
-            <NavLink
+            {/* <NavLink
               className="nav-link"
               activeStyle={styles.activeLink}
-              to='/login' exact
-            >Login</NavLink>
-            <NavLink
-              className="nav-link" 
-              activeStyle={styles.activeLink}
-              to='/signup'
-            >Signup</NavLink>
+              to='/about' exact
+            >About</NavLink> */}
             <NavLink
               className="nav-link" 
               activeStyle={styles.activeLink}
               to='/forms'
-            >Database</NavLink>
+            >Reviews</NavLink>
             {/* <NavLink
               className="nav-link" 
               activeStyle={styles.activeLink}
@@ -48,6 +45,8 @@ const App = () => {
             <Route path='/login' component={Login} />
             <Route path='/forms' component={Forms} />
             <PrivateRoute path='/film' component={Film} />
+            <Route path='/about' component={About} />
+            <Route path='/secret' component={Secret} />            
             <Redirect to='/' />
           </Switch>
         </div>

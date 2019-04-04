@@ -10,6 +10,7 @@ const app = express();
 const foodrouter = require('./api/routes/food');
 const movieRouter = require('./api/routes/movie')
 const userRouter = require('./api/routes/user')
+
 //cross origin sharing (different domain)
 app.use(cors())
 app.use(morgan('dev'))
@@ -27,7 +28,10 @@ mongoose.connect(db, {
 //Express routes
 app.use('/api/food', foodrouter)
 app.use('/api/movie', movieRouter)
-app.use('/user', userRouter)
+app.use('/api/user', userRouter)
+
+//Gallery unused
+// app.use('/api/gallery', galleryRouter)
 
 //serve static assets if in production
 if(process.env.NODE_ENV === 'production'){
@@ -39,6 +43,8 @@ if(process.env.NODE_ENV === 'production'){
 }
 
 app.use('/uploads', express.static('uploads'))
+// unused
+// app.use('/uploads2', express.static('uploads2'))
 
 //Server port
 const port = process.env.PORT || 4000;
