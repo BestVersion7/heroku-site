@@ -36,12 +36,13 @@ const Film =  () => {
         <div>       
           User: {auth.getPayloadUsername()}
             <button 
+              className="regular-button"
               onClick = {handleSignout}
             >Signout </button>
           <h2> Hidden Content </h2>
-          04/04/19: Something wrong with this (working)
+          <p> Images stored on Cloudinary </p>
           <FilmsUpload handleShowData={handleShowData}/>
-          
+          <br />
           <TransitionGroup className="gallery-container">
               {hiddenData.map(({_id, picture}) => (
                 <CSSTransition 

@@ -11,6 +11,7 @@ export default () => {
         <div>       
             Login to see my work
             <button 
+                className="regular-button"
                 onClick={handleClick}
             >Login</button>
             <div style={{'height': '10em'}}></div>

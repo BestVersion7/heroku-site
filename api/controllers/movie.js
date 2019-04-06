@@ -1,5 +1,6 @@
 const Movie = require('../models/movie')
-const fs = require('fs')
+const dataUri = require('../middleware/formatImage')
+const cloudinary = require('cloudinary').v2
 
 exports.FetchAll = (req, res) => {
     Movie.find()
@@ -8,12 +9,27 @@ exports.FetchAll = (req, res) => {
 }
 
 exports.UploadImage = (req, res) => {
-    Movie.create({
-        title: req.body.title,
-        picture: req.file.path
-    })
-    .then(() => res.status(201).send('Successful Post!'))
-    .catch(err => res.status(400).send(err))
+    //content is the buffer string from dataUri  
+    const file = dataUri(req).content
+    cloudinary.uploader.upload(
+        file, 
+        {
+            folder: '0504 belal',
+            use_filename: true,
+            public_id: `${req.file.fieldname}-${Date.now()}`
+        },
+        (err, result) => {
+            if(result) {
+                // console.log(result)
+                Movie.create({
+                    picture: result.secure_url,
+                    public_id: result.public_id
+                })
+                .then(() => res.status(201).send('created!'))
+                .catch(() => res.status(500).send('error'))
+            }
+        }
+    )
 }
 
 exports.Deleteall = (req, res) => {
@@ -25,16 +41,17 @@ exports.Deleteall = (req, res) => {
 exports.DeleteImage = (req, res) => {
     Movie.findByIdAndDelete(req.params.id)
     .then(item => {
-        if(item === null) {
-            return res.status(500).send('fail')
-        } else {
-            res.status(204).send('deleted')
-            fs.unlink(item.picture, err => {
-                if(err) {
-                    return
-                }
-            })
-        }
+        cloudinary.uploader.destroy(
+            item.public_id,
+            (err, result) => {
+            if (result) {
+                res.status(202).send('deleted')
+            }
+        })
     })
     .catch(() => res.status(500).send('failed'))
+
+    // Movie.findByIdAndDelete(req.params.id)
+    // .then(() => res.status(204).send('deleted'))
+    // .catch(() => res.status(500).send('failed'))
 }

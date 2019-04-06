@@ -30,7 +30,7 @@ export default ({handleShowData}) => {
                     onChange={handleChangeUpload}
                 /><br />
                 <span> (only accepts .jpg, .png 5MB maximum) </span>
-                <button>Post Picture</button>
+                <button className="regular-button">Upload Picture</button>
             </form>
         </div>
     )

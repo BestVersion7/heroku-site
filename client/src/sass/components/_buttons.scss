@@ -1,19 +1,32 @@
 @import 'helpers/mediaquery';
 
-.code-button {
-}
-
-button {
+.regular-button {
     color: white;
     background: green;
     font-weight: bold;
     border: solid black;
 }
 
-.redirect-link-button {
-    background: transparent;
-    color: blue;
+.regular-button-danger {
+    @extend .regular-button;
+    background: red
+}
+
+.remove-button {
+    background: black;
     border: none;
+    cursor: pointer;
+    color: rgb(56, 211, 120);
+    opacity: .3;
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.redirect-link-button {
+    background: none;
+    border: none;
+    color: blue;
     cursor: pointer;
     text-decoration: underline;
     font-style: italic;

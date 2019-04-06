@@ -51,7 +51,7 @@ export default () => {
                     minLength = '1'
                     maxLength = '15'
                 /> <br />
-                <button> Submit </button>           
+                <button className="regular-button"> Submit </button>           
             </form>
             <div style={{'height':'10em'}}>           
                 {credFail && <CredentialFail />}

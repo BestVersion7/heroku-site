@@ -46,7 +46,7 @@ export default () => {
                     <input onChange = {handleUsernameChange}/> <br />
                     <label>Password </label>
                     <input type="password" onChange = {handlePasswordChange}/> <br />
-                    <button> Login </button>
+                    <button className="regular-button"> Login </button>
                 </form>
                 <button 
                 className="redirect-link-button"

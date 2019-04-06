@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
 require('dotenv').config()
+const cloudinary = require('cloudinary').v2
 
 const app = express();
 const foodrouter = require('./api/routes/food');
@@ -25,6 +26,11 @@ mongoose.connect(db, {
 })
 .then(console.log('mongoose running'))
 
+//connect cloudinary
+cloudinary.config({
+    CLOUDINARY_URL:process.env.CLOUDINARY_URL
+});
+
 //Express routes
 app.use('/api/food', foodrouter)
 app.use('/api/movie', movieRouter)
@@ -41,10 +47,6 @@ if(process.env.NODE_ENV === 'production'){
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     });
 }
-
-app.use('/uploads', express.static('uploads'))
-// unused
-// app.use('/uploads2', express.static('uploads2'))
 
 //Server port
 const port = process.env.PORT || 4000;

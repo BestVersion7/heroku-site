@@ -53,8 +53,8 @@ export default () => {
                     value = {addFood}
                     onChange = {e => setAddFood(e.target.value)}
                 /> <br />
-                <button>Submit</button>
-                <button onClick={handleReset}>Reset</button> 
+                <button className="regular-button">Submit</button>
+                <button className="regular-button-danger" onClick={handleReset}>Reset</button> 
             </form>
             
             <TransitionGroup>
@@ -66,7 +66,11 @@ export default () => {
                     >
                         <div>
                             {food}
-                            <button value={_id} onClick = {handleDelete}>X</button>
+                            <button
+                             value={_id} 
+                             onClick = {handleDelete}
+                             className="regular-button"
+                             >X</button>
                         </div>
                     </CSSTransition>
                 ))}
