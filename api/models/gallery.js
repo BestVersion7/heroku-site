@@ -24,11 +24,11 @@ const gallerySchema = new Schema({
     },
     username: {
         type: String,
-        default: 'testusername'
+        required: true
     },
     password: {
         type: String,
-        default: 'testpassword'
+        required: true
     },
     gallery: [imageSchema]
 })

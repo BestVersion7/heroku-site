@@ -23,22 +23,3 @@ router.get('/get/:username', (req, res) => {
     })
 })
 module.exports = router
-
-// //find user first and delete by body
-// router.delete('/signup', (req, res) => {
-//     User.find({email: req.body.email}) 
-//     .then(item => {
-//         if(item.length<1) {
-//             return res.status(404).send('no user')
-//         } 
-//         User.findOneAndDelete({email: req.body.email})
-//         .then(item => res.send('success'))
-//         .catch(err => res.send(err))
-//     })
-// })
-
-// router.put('/:email', (req, res) => {
-//     User.findOneAndUpdate({email: req.params.email}, {password: req.body.password})
-//     .then(item => res.json({results: item}))
-//     .catch(err => res.status(400).send(err.message))
-// })

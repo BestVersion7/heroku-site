@@ -11,6 +11,7 @@ const app = express();
 const foodrouter = require('./api/routes/food');
 const movieRouter = require('./api/routes/movie')
 const userRouter = require('./api/routes/user')
+const galleryRouter = require('./api/routes/gallery')
 
 //cross origin sharing (different domain)
 app.use(cors())
@@ -37,7 +38,7 @@ app.use('/api/movie', movieRouter)
 app.use('/api/user', userRouter)
 
 //Gallery unused
-// app.use('/api/gallery', galleryRouter)
+app.use('/api/gallery', galleryRouter)
 
 //serve static assets if in production
 if(process.env.NODE_ENV === 'production'){

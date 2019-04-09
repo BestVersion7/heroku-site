@@ -9,6 +9,8 @@ import Film from './Routes/film';
 import Signup from './Routes/signup'
 import Secret from './Routes/secret'
 import About from './Routes/about'
+import Beauty from './Secret/Beauty'
+import {PrivateRoute2} from './Routes/PrivateRoute2'
 
 const App = () => {
   return (
@@ -32,11 +34,6 @@ const App = () => {
               activeStyle={styles.activeLink}
               to='/forms'
             >Reviews</NavLink>
-            {/* <NavLink
-              className="nav-link" 
-              activeStyle={styles.activeLink}
-              to='/film'
-            >Film</NavLink> */}
           </nav>
 
           <Switch>
@@ -46,7 +43,11 @@ const App = () => {
             <Route path='/forms' component={Forms} />
             <PrivateRoute path='/film' component={Film} />
             <Route path='/about' component={About} />
-            {/* <Route path='/secret' component={Secret} />             */}
+            
+            {/* separate */}
+            <Route path='/secret' component={Secret} />            
+            <PrivateRoute2 path='/beauty' component={Beauty}/>
+            
             <Redirect to='/' />
           </Switch>
         </div>

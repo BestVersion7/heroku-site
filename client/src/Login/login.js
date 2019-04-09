@@ -49,8 +49,8 @@ export default () => {
                     <button className="regular-button"> Login </button>
                 </form>
                 <button 
-                className="redirect-link-button"
-                onClick={() =>setRedirectSignup(true)}>
+                    className="redirect-link-button"
+                    onClick={() =>setRedirectSignup(true)}>
                     Don't have an account? Sign up here!
                 </button>
                 <br />

@@ -1,19 +1,17 @@
 import React, {useState} from 'react';
 import axios from 'axios'
-import {auth} from '../auth'
 
-export default () => {
+export default ({fetchAgain}) => {
     const [file, setFile] = useState(null)
 
     const handleSubmit = e => {
         e.preventDefault()
         const formData = new FormData()
-        formData.append('title', auth.getPayloadUsername())
-        formData.append('movie', file)
+        formData.append('dze', file)
         
         const config = axios.defaults.headers.common['Content-Type'] = 'multipart/form-data'
-        axios.post('/api/movie', formData, config)
-        .then(() => alert('Success!'))
+        axios.post('/api/gallery', formData, config)
+        .then(() => fetchAgain())
         .catch(err => alert(err))
     }
 
@@ -23,12 +21,11 @@ export default () => {
 
     return (
         <div className="page-container">
-            27/03/19: Multer
             <form 
                 onSubmit = {handleSubmit}
             >
                 <input 
-                    name="movie"
+                    name="dze"
                     type="file" 
                     onChange={handleChangeUpload}
                 />

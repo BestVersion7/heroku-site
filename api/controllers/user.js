@@ -18,7 +18,6 @@ exports.signup_user = (req, res, next) => {
         }
         // hash and salt password
         bcrypt.hash(req.body.password, 10, (err, hash) => {
-            if(err) {return res.status(500).send('bcrypt hash err')}
             if(hash) {
                 User.create({
                     username: req.body.username,
@@ -39,9 +38,6 @@ exports.login_user = (req, res, next) => {
             return res.status(500).send('auth failed1')
         }
         bcrypt.compare(req.body.password, user.password, (err, result) => {
-            if(err) {
-                return res.status(500).send('bcrypt compare err')
-            }
             // compare password then create token
             if(result) {
                 const token = jwt.sign(
