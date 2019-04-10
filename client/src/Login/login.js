@@ -41,6 +41,7 @@ export default () => {
         <div>
             <h2>Login Page</h2>
             LOGIN TO SEE A HIDDEN PAGE!
+            <p>(Username: fast; Password: fast)</p>
                 <form onSubmit={handleLogin}>
                     <label>Username</label>
                     <input onChange = {handleUsernameChange}/> <br />
