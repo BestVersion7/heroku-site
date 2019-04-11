@@ -35,6 +35,7 @@ const Beauty = () => {
 
     return (
         <div>
+            Needs work
             <ImageUpload fetchImages={fetchImages}/>
             <button 
                 className="btn-logout"

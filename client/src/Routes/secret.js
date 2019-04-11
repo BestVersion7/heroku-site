@@ -1,10 +1,11 @@
-import Gallery from '../Secret/Gallery'
+import Login from '../Secret/Login'
 import React from 'react'
 
 export default () => {
     return (
         <div>
-            <div><Gallery /></div>
+            Needs work
+            <div><Login /></div>
         </div>
     )
 }

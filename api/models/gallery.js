@@ -11,6 +11,10 @@ const imageSchema = new Schema({
         type: String,
         required: true
     },
+    picture_public_id: {
+        type: String,
+        required: true
+    },
     date: {
         type: Date,
         default: Date.now

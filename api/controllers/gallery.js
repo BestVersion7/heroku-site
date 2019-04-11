@@ -10,19 +10,21 @@ exports.DeleteAll = (req, res) => {
     .catch(() => res.status(500).send('err'))
 }
 
-//NEED DEBUGGING
 exports.DeleteOne = (req, res) => {
-    Gallery.updateOne({
-        _id: "5cac0ec1f3990d5e9c5649d2"
-    }, {
-        $pull: {
-            gallery: {
-                _id: req.params.id
-            }
-        }
-    })
-    .then(item => res.status(202).send(item))
-    .catch(err => res.status(500).send(err))
+    Gallery.find({_id: "5cac0ec1f3990d5e9c5649d2"})
+    
+
+    // Gallery.findOneAndUpdate({
+    //     _id: "5cac0ec1f3990d5e9c5649d2"
+    // }, {
+    //     $pull: {
+    //         gallery: {
+    //             _id: req.params.id
+    //         }
+    //     }
+    // })
+    // .then(item => res.send(item.picture_public_id))
+    // .catch(err => res.status(500).send('failed'))
 }
 
 exports.CreateUser = (req, res) => {
@@ -52,6 +54,7 @@ exports.PostNewImages = (req, res) => {
                 }, {
                     $push: {
                         gallery: {
+                            picture_public_id: results.public_id,
                             picture: results.secure_url
                         }
                     }
