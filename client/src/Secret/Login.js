@@ -27,7 +27,6 @@ const Login = () => {
         setPassword(e.target.value)
     }
    
-    // if(!loading) return <div>Loading...</div>
     if(redirect) return <Redirect to="/beauty" />
     
     return (
@@ -35,13 +34,13 @@ const Login = () => {
             Beauty Page
             <p>Login:</p>
             <form onSubmit={handleFormSubmit}>
-                <label name="user"> User </label>
+                <label for="user"> User </label>
                 <input 
                     name="user"
                     type="text"
                     onChange = {handleUsernameChange}
                 /> <br />
-                <label name="password"> Password </label>
+                <label for="password"> Password </label>
                 <input 
                     name="password"
                     type="password"

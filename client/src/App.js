@@ -46,7 +46,7 @@ const App = () => {
             
             {/* separate */}
             <Route path='/secret' component={Secret} />            
-            <PrivateRoute2 path='/beauty' component={Beauty}/>
+            <Route path='/beauty' component={Beauty}/>
             
             <Redirect to='/' />
           </Switch>

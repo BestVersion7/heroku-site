@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios'
 
-export default ({fetchAgain}) => {
+export default ({fetchImages}) => {
     const [file, setFile] = useState(null)
 
     const handleSubmit = e => {
@@ -11,7 +11,7 @@ export default ({fetchAgain}) => {
         
         const config = axios.defaults.headers.common['Content-Type'] = 'multipart/form-data'
         axios.post('/api/gallery', formData, config)
-        .then(() => fetchAgain())
+        .then(() => fetchImages())
         .catch(err => alert(err))
     }
 

@@ -12,7 +12,7 @@
     background: red
 }
 
-.remove-button {
+.btn-remove {
     background: black;
     border: none;
     cursor: pointer;
@@ -21,6 +21,21 @@
     &:hover {
         opacity: 1;
     }
+}
+
+.btn-remove-absolute {
+    position: absolute;
+    top: 0;
+    right:0
+}
+
+.btn-logout {
+    @extend .regular-button;
+    background: gray;
+    position: absolute;
+    top: 4.7em;
+    right: 0;
+    cursor: pointer
 }
 
 .redirect-link-button {
