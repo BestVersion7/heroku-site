@@ -42,7 +42,7 @@ const App = () => {
             <Route path='/login' component={Login} />
             <Route path='/forms' component={Forms} />
             <PrivateRoute path='/film' component={Film} />
-            <Route path='/about' component={About} />
+            <PrivateRoute2 path='/about' component={About} />
             
             {/* separate */}
             <Route path='/secret' component={Secret} />            
