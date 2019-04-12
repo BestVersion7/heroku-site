@@ -43,3 +43,7 @@
 	position: relative
 }
 
+.user-comment-container {
+	display: grid;
+	grid-template: auto/ auto 1fr
+}

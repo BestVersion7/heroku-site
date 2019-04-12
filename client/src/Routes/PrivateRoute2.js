@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {auth} from '../auth'
+import {auth} from '../utilities/auth'
 import {Route, Redirect} from 'react-router-dom'
 import axios from 'axios'
 

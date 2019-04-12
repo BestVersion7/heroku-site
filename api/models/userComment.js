@@ -3,12 +3,10 @@ const Schema = mongoose.Schema
 
 const userCommentSchema = new Schema({
     username: {
-        type: String,
-        default: 'Anonymous'
+        type: String
     },
     picture_url_thumbnail: {
-        type: String,
-        default: 'https://res.cloudinary.com/crimson-flamingo/image/upload/v1554830981/0604%20dze/dze-1554830981202.jpg'
+        type: String
     },
     date: {
         type: Date,

@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import axios from 'axios'
-import {CredentialFail} from './credentialVerify'
+import CredentialFail from './credentialFail'
 import {Redirect} from 'react-router-dom'
 
 export default () => {
@@ -51,7 +51,7 @@ export default () => {
                     minLength = '1'
                     maxLength = '15'
                 /> <br />
-                <button className="regular-button"> Submit </button>           
+                <button className="btn-regular"> Submit </button>           
             </form>
             <div style={{'height':'10em'}}>           
                 {credFail && <CredentialFail />}

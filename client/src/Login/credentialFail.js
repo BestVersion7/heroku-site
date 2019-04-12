@@ -1,11 +1,11 @@
 import React from 'react'
 import {CSSTransition} from 'react-transition-group'
 
-export const CredentialFail = () => {
+const CredentialFail = () => {
     return (
         <CSSTransition
             classNames="message"
-            timeout={500}
+            timeout={300}
             in={true}
             appear={true}
         >
@@ -16,3 +16,5 @@ export const CredentialFail = () => {
         
     )
 }
+
+export default CredentialFail

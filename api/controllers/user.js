@@ -43,7 +43,10 @@ exports.login_user = (req, res, next) => {
             // compare password then create token
             if(result) {
                 const token = jwt.sign(
-                    {username: user.username},
+                    {
+                        username: user.username,
+                        picture_url_thumbnail: user.picture_url_thumbnail
+                    },
                     process.env.PRIVATE_KEY,
                     {expiresIn: '10m'}
                 )
@@ -80,8 +83,8 @@ exports.change_picture = (req, res) => {
                     const transformThumbnail = cloudinary.url(
                         `${cb.public_id}.${cb.format}`,
                         {
-                            height: 200,
-                            width: 200,
+                            height: 50,
+                            width: 50,
                             crop: "scale"
                         }
                     )               
@@ -100,3 +103,20 @@ exports.change_picture = (req, res) => {
 }
 
 
+
+exports.dummy = (req, res) => {
+    res.send('good')
+}
+
+exports.get_user = (req, res) => {
+    User.findOne({username: req.params.username})
+    .select("picture_url_thumbnail")
+    .then(item => {
+        if(item !==null) {
+            return res.send(item)
+        } else {
+            return res.status(500).send('500err')
+        }
+    })
+    .catch(err => res.status(500).send('500err'))
+}

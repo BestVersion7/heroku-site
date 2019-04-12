@@ -1,14 +1,22 @@
-import React from 'react'
+import React, {useState} from 'react'
+import {Redirect} from 'react-router-dom'
 
 export default () => {
+    const [redirectPage, setRedirectPage] = useState(false)
+
+    const handleSignout = () => {
+        localStorage.removeItem("jwt_token")
+        setRedirectPage(true)
+    }
+
+    if(redirectPage) return <Redirect to="/" />
+
     return (
         <div>
-            <button
-                className="regular-button"
-                onClick = {() => {
-                    history.pushState('/home')
-                }}
-            >Sign out</button>
+            <button 
+              className="btn-regular"
+              onClick = {handleSignout}
+            >Signout </button>
         </div>
     )
 }

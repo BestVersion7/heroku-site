@@ -8,7 +8,6 @@ require('dotenv').config()
 const cloudinary = require('cloudinary').v2
 
 const app = express();
-const foodrouter = require('./api/routes/food');
 const movieRouter = require('./api/routes/movie')
 const userRouter = require('./api/routes/user')
 const galleryRouter = require('./api/routes/gallery')
@@ -34,7 +33,6 @@ cloudinary.config({
 });
 
 //Express routes
-app.use('/api/food', foodrouter)
 app.use('/api/movie', movieRouter)
 app.use('/api/user', userRouter)
 app.use('/api/usercomment', userCommentRouter)

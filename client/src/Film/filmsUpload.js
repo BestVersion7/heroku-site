@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios'
-import {auth} from '../auth'
+import {auth} from '../utilities/auth'
 
 export default ({handleShowData}) => {
     const [file, setFile] = useState(null)

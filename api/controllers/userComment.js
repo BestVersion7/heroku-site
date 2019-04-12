@@ -13,5 +13,8 @@ exports.postComment = (req, res) => {
 }
 
 exports.deleteComment = (req, res) => {
-    
+    UserComment.deleteMany()
+    .then(() => res.status(202).send('deleted all'))
+    .catch(() => res.status(500).send('err'))
 }
+

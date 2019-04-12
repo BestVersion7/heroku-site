@@ -4,12 +4,13 @@ import Home from './Routes/home';
 import Review from './Routes/review';
 import Login from './Routes/login';
 import {PrivateRoute} from './Routes/PrivateRoute'
-import { NavLink, Switch, Route, Redirect, BrowserRouter as Router } from 'react-router-dom'
+import {Switch, Route, Redirect, BrowserRouter as Router } from 'react-router-dom'
 import Film from './Routes/film';
 import Signup from './Routes/signup'
 import Secret from './Routes/secret'
 import About from './Routes/about'
 import Beauty from './Secret/Beauty'
+import TopNav from './Navbar/TopNav'
 import {PrivateRoute2} from './Routes/PrivateRoute2'
 
 const App = () => {
@@ -18,23 +19,7 @@ const App = () => {
       <Header />
       <Router>
         <div>
-          <nav>            
-            <NavLink
-              className="nav-link"
-              activeStyle={styles.activeLink}
-              to='/' exact
-            >Home</NavLink>
-            {/* <NavLink
-              className="nav-link"
-              activeStyle={styles.activeLink}
-              to='/about' exact
-            >About</NavLink> */}
-            <NavLink
-              className="nav-link" 
-              activeStyle={styles.activeLink}
-              to='/reviews'
-            >Reviews</NavLink>
-          </nav>
+          <TopNav />
 
           <Switch>
             <Route path='/' exact component={Home} />
@@ -56,9 +41,4 @@ const App = () => {
   )
 }
 
-const styles = {
-  activeLink: {
-    background: 'black'
-  }
-}
 export default App;

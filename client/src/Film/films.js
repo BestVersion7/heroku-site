@@ -1,44 +1,34 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
-import {auth} from '../auth'
-import {Redirect} from 'react-router-dom'
+import {auth} from '../utilities/auth'
 import FilmsUpload from './filmsUpload'
 import {TransitionGroup, CSSTransition} from 'react-transition-group'
 import FilmsLayout from './filmsLayout'
+import Signout from '../Login/signout'
 
 export const FilmContext = React.createContext()
 
 const Film =  () => {
     const [hiddenData, setHiddenData] = useState([])
     const [loading, setLoading] = useState(false)
-    const [redirectPage, setRedirectPage] = useState(false)
 
     const handleShowData = async () => {
       try {
-        const {data} = await axios.get('/api/movie', auth.getToken())
+        const {data} = await axios.get('/api/movie', auth.getPayloadUsername())
         setHiddenData(data)
         setLoading(true)
       } catch (err) {
-        setRedirectPage(true)
+
       }       
     }
 
     useEffect(() => {handleShowData()}, [])
 
-    const handleSignout = () => {
-      localStorage.removeItem("jwt_token")
-      setRedirectPage(true)
-    }
-
-    if(redirectPage) return <Redirect to = '/' />
     if (!loading) return(<div>Loading...</div>)
     return (
         <div>       
           User: {auth.getPayloadUsername()}
-            <button 
-              className="regular-button"
-              onClick = {handleSignout}
-            >Signout </button>
+          <Signout />
           <h2> Hidden Content </h2>
           <p> Images stored on Cloudinary </p>
           <FilmsUpload handleShowData={handleShowData}/>

@@ -7,6 +7,10 @@ const upload = require('../middleware/uploadImage')
 router.get('/', verifyToken, userController.user_all)
 router.post('/signup', verifyToken, userController.signup_user)
 router.post('/login', userController.login_user)
+router.get('/dummy', verifyToken, userController.dummy)
+
+//get a user for navbar show profile picture
+router.get('/:username', verifyToken, userController.get_user)
 
 // router.delete('/delete', userController.clear_database)
 

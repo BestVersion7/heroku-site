@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
-import {CredentialFail} from './credentialVerify'
-import {auth} from '../auth'
+import CredentialFail from './credentialFail'
+import {auth} from '../utilities/auth'
 import {Redirect} from 'react-router-dom'
 import axios from 'axios';
 
@@ -47,7 +47,7 @@ export default () => {
                     <input onChange = {handleUsernameChange}/> <br />
                     <label>Password </label>
                     <input type="password" onChange = {handlePasswordChange}/> <br />
-                    <button className="regular-button"> Login </button>
+                    <button className="btn-regular"> Login </button>
                 </form>
                 <button 
                     className="redirect-link-button"

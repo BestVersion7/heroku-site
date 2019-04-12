@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
-import {auth} from '../auth'
+import {auth} from '../utilities/auth'
 import {Redirect} from 'react-router-dom'
 import ImageUpload from './ImageUpload'
 

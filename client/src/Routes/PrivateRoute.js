@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {auth} from '../auth'
+import {auth} from '../utilities/auth'
 import {Route, Redirect} from 'react-router-dom'
 import axios from 'axios'
 
@@ -10,7 +10,7 @@ export function PrivateRoute({ component: Component, ...rest }) {
   //run through server verification and if validates, then proceeds
   const validateToken = async () => {
     try {
-      await axios.get('/api/user/all', auth.getToken())
+      await axios.get('/api/user/dummy', auth.getToken())
     } catch {
       setToken(false)
     }

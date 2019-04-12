@@ -20,11 +20,11 @@ const userSchema = new Schema({
     },
     picture_url_thumbnail: {
         type: String,
-        default: 'https://res.cloudinary.com/crimson-flamingo/image/upload/v1554830981/0604%20dze/dze-1554830981202.jpg'
+        default: 'https://res.cloudinary.com/crimson-flamingo/image/upload/c_scale,w_42/v1555079519/1104%20profile/picture-1555079520338.png'
     },
     picture_url_original: {
         type: String,
-        default: 'https://res.cloudinary.com/crimson-flamingo/image/upload/v1554830981/0604%20dze/dze-1554830981202.jpg'
+        default: 'https://res.cloudinary.com/crimson-flamingo/image/upload/c_scale,w_42/v1555079519/1104%20profile/picture-1555079520338.png'
     }
 })
 
