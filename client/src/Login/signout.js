@@ -12,7 +12,7 @@ export default () => {
     if(redirectPage) return <Redirect to="/" />
 
     return (
-        <div>
+        <div className="btn-signout">
             <button 
               className="btn-regular"
               onClick = {handleSignout}

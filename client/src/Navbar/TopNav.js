@@ -1,7 +1,11 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {NavLink} from 'react-router-dom'
+import Signout from '../Login/signout'
+
+export const SignoutBtnContext = React.createContext()
 
 const TopNav = () => {
+  const [showSignoutBtn, setShowSignoutBtn] = useState(false)
     return (
         <nav>            
             <NavLink
@@ -19,10 +23,9 @@ const TopNav = () => {
               activeStyle={styles.activeLink}
               to='/reviews'
             >Reviews</NavLink>
-
-            {/* icons */}
-            {/* <img src={auth.getPayloadProfilePic()} /> */}
-
+            <SignoutBtnContext.Provider value={setShowSignoutBtn}>
+              {showSignoutBtn && <Signout />}
+            </SignoutBtnContext.Provider>
         </nav>
     )
 }

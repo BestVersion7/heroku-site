@@ -4,7 +4,8 @@ import {auth} from '../utilities/auth'
 import {Redirect} from 'react-router-dom'
 import axios from 'axios';
 
-export default () => {
+const Login = () => {
+
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [credFail, setCredFail] = useState(false)
@@ -39,6 +40,7 @@ export default () => {
 
     return (
         <div>
+
             <h2>Login Page</h2>
             LOGIN TO SEE A HIDDEN PAGE!
             <p>(Username: fast; Password: fast)</p>
@@ -61,3 +63,5 @@ export default () => {
         </div>
     )
 }
+
+export default Login

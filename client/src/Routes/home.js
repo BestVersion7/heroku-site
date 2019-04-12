@@ -16,6 +16,7 @@ export default () => {
             <ul>
                 <li>ReactJS</li>
                 <li>SASS</li>
+                <li>HTML</li>
             </ul>
             <p>Technologies Used: Back-End</p>
             <ul>
@@ -24,8 +25,9 @@ export default () => {
                 <li>MongoDB Atlas</li>
                 <li>Cloudinary</li>
                 <li>Heroku</li>
+                <li>Google Analytics</li>
             </ul>
-            Login to see my work
+            Login to post comments and access a private route <br />
             <button 
                 className="btn-regular"
                 onClick={handleClick}

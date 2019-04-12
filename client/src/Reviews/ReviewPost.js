@@ -19,6 +19,7 @@ const ReviewPost = ({fetchComment}) => {
                 picture_url_thumbnail: auth.getPayloadProfilePic(),
                 comment: addComment
             })
+            setAddComment('')
             fetchComment()
         } catch(err) {
             setCredentialFail(true)
