@@ -1,10 +1,12 @@
 const User = require('../models/user')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const formatImage = require('../middleware/formatImage')
+const cloudinary = require('cloudinary').v2
 
 exports.user_all = (req, res, next) => {
     User.find()
-    .select("username password")
+    .select("username picture_url_thumbnail picture_url_original")
     .then(item => res.send(item))
     .catch(err => res.status(500).send(err.message))
 }
@@ -60,3 +62,41 @@ exports.clear_database = (req, res, next) => {
     User.deleteMany()
     .then(item => res.send('Deleted all records'))
 }
+
+exports.change_picture = (req, res) => {
+    User.findOne({_id: req.params.id})
+    .then(item => {
+        const file = formatImage(req).content
+        cloudinary.uploader.upload(
+            file,
+            {
+                folder: '1104 profile',
+                public_id: `${req.file.fieldname}-${Date.now()}`,
+                
+            },
+            (err, cb) => {
+                if(cb) {
+                    //transform to thumbnail
+                    const transformThumbnail = cloudinary.url(
+                        `${cb.public_id}.${cb.format}`,
+                        {
+                            height: 200,
+                            width: 200,
+                            crop: "scale"
+                        }
+                    )               
+                    User.updateOne(
+                        {_id: item._id},
+                        {picture_url_thumbnail: transformThumbnail},
+                        {picture_url_original: cb.secure_url}
+                    )
+                    .then(() => res.send('changed picture'))
+                    .catch(() => res.status(404).send('404 picture'))
+                }
+            }
+        )
+    })
+    .catch(err => res.status(500).send('bad request'))
+}
+
+

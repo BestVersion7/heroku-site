@@ -1,5 +1,5 @@
 const Movie = require('../models/movie')
-const dataUri = require('../middleware/formatImage')
+const formatImage = require('../middleware/formatImage')
 const cloudinary = require('cloudinary').v2
 
 exports.FetchAll = (req, res) => {
@@ -10,7 +10,7 @@ exports.FetchAll = (req, res) => {
 
 exports.UploadImage = (req, res) => {
     //content is the buffer string from dataUri  
-    const file = dataUri(req).content
+    const file = formatImage(req).content
     cloudinary.uploader.upload(
         file, 
         {

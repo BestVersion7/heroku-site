@@ -1,10 +1,10 @@
 import React from 'react'
-import FoodList from '../1303FoodList/FoodList'
+import Review from '../Reviews/Review'
 
 export default () => {
     return (
         <div className="page-container">
-            <FoodList />
+            <Review />
             <div style={{'height': '15em'}}></div>
         </div>
     )

@@ -12,6 +12,7 @@ const foodrouter = require('./api/routes/food');
 const movieRouter = require('./api/routes/movie')
 const userRouter = require('./api/routes/user')
 const galleryRouter = require('./api/routes/gallery')
+const userCommentRouter = require('./api/routes/userComment')
 
 //cross origin sharing (different domain)
 app.use(cors())
@@ -36,6 +37,7 @@ cloudinary.config({
 app.use('/api/food', foodrouter)
 app.use('/api/movie', movieRouter)
 app.use('/api/user', userRouter)
+app.use('/api/usercomment', userCommentRouter)
 
 //Gallery unused
 app.use('/api/gallery', galleryRouter)

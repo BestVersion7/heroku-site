@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import Home from './Routes/home';
-import Forms from './Routes/forms';
+import Review from './Routes/review';
 import Login from './Routes/login';
 import {PrivateRoute} from './Routes/PrivateRoute'
 import { NavLink, Switch, Route, Redirect, BrowserRouter as Router } from 'react-router-dom'
@@ -32,7 +32,7 @@ const App = () => {
             <NavLink
               className="nav-link" 
               activeStyle={styles.activeLink}
-              to='/forms'
+              to='/reviews'
             >Reviews</NavLink>
           </nav>
 
@@ -40,7 +40,7 @@ const App = () => {
             <Route path='/' exact component={Home} />
             <Route path='/signup' component={Signup} />
             <Route path='/login' component={Login} />
-            <Route path='/forms' component={Forms} />
+            <Route path='/reviews' component={Review} />
             <PrivateRoute path='/film' component={Film} />
             <Route path='/about' component={About} />
             

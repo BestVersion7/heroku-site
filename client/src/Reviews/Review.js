@@ -3,74 +3,69 @@ import axios from 'axios'
 import {CSSTransition, TransitionGroup} from 'react-transition-group'
 
 export default () => {
-    const [food, setFood] = useState([])
-    const [addFood, setAddFood] = useState('')
+    const [comments, setComments] = useState([])
+    const [addComment, setAddComment] = useState('')
     
-    const fetchAllFood = async () => {
-        const {data} = await axios.get('/api/food')
-        setFood(data)
+    const fetchComments = async () => {
+        const {data} = await axios.get('/api/usercomment')
+        setComments(data)
     }
 
     //initial map all data
     useEffect(() => {
-        fetchAllFood()
+        fetchComments()
     }, [])
 
     //post data and run the fetch all again (2 requests)
-    const handleAddFood = async (e) => {
+    const handleAddComment = async (e) => {
         e.preventDefault()
         try {
-            await axios.post('/api/food', {
-                food: addFood
+            await axios.post('/api/usercomment', {
+                comment: addComment
             }) 
         } catch(err) {
             return alert('Cannot add!')
         }     
-        setAddFood('')
-        fetchAllFood()
+        setAddComment('')
+        fetchComments()
     }
 
     //deleteData
-    const handleDelete = async (e) => {
-        e.preventDefault()
-        await axios.delete(`/api/food/${e.target.value}`) 
-        fetchAllFood()
-    }
+    // const handleDelete = async (e) => {
+    //     e.preventDefault()
+    //     await axios.delete(`/api/usercomment/${e.target.value}`) 
+    //     fetchComments()
+    // }
 
     //hard reset
-    const handleReset = async(e) => {
-        e.preventDefault()
-        await axios.delete('/api/food/reset')
-        fetchAllFood()
-    }
+    // const handleReset = async(e) => {
+    //     e.preventDefault()
+    //     await axios.delete('/api/usercomment')
+    //     fetchAllFood()
+    // }
     
     return (
         <div>
             Leave a message!
-            <form onSubmit = {handleAddFood}>
+            <form onSubmit = {handleAddComment}>
                 <textarea
                     placeholder = "Write a message here"
-                    value = {addFood}
-                    onChange = {e => setAddFood(e.target.value)}
+                    value = {addComment}
+                    onChange = {e => setAddComment(e.target.value)}
                 /> <br />
                 <button className="regular-button">Submit</button>
-                <button className="regular-button-danger" onClick={handleReset}>Reset</button> 
             </form>
             
             <TransitionGroup>
-                {food.map(({_id, food}) => (
+                {comments.map(({_id, comment, picture_url}) => (
                     <CSSTransition
                         timeout={300} 
                         key={_id}
                         classNames="zoom"
                     >
                         <div>
-                            {food}
-                            <button
-                             value={_id} 
-                             onClick = {handleDelete}
-                             className="regular-button"
-                             >X</button>
+                            <img src={picture_url} alt="portrait" />
+                            {comment}
                         </div>
                     </CSSTransition>
                 ))}
