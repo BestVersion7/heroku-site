@@ -9,6 +9,9 @@ router.get('/', UserCommentController.fetchComments)
 //username picture_url comment
 router.post('/', verifyToken, UserCommentController.postComment)
 
+//delete one comment
+// router.delete('/:id', UserCommentController.deleteOneComment)
+
 // delete all
 // router.delete('/', UserCommentController.deleteComment)
 module.exports = router
