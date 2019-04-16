@@ -1,39 +1,54 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {NavLink} from 'react-router-dom'
-import Signout from '../Login/signout'
-
-export const SignoutBtnContext = React.createContext()
+import {auth} from '../utilities/auth'
+import User from './User';
+import axios from 'axios'
 
 const TopNav = () => {
-  const [showSignoutBtn, setShowSignoutBtn] = useState(false)
-    return (
-        <nav>            
-            <NavLink
-              className="nav-link"
-              activeStyle={styles.activeLink}
-              to='/' exact
-            >Home</NavLink>
-            {/* <NavLink
-              className="nav-link"
-              activeStyle={styles.activeLink}
-              to='/about' exact
-            >About</NavLink> */}
-            <NavLink
-              className="nav-link" 
-              activeStyle={styles.activeLink}
-              to='/reviews'
-            >Reviews</NavLink>
-            <SignoutBtnContext.Provider value={setShowSignoutBtn}>
-              {showSignoutBtn && <Signout />}
-            </SignoutBtnContext.Provider>
-        </nav>
-    )
+  const [signInBtn, setSignInBtn] = useState(true)
+  const [loggedIn, setLoggedIn] = useState(true)
+
+  const validateToken = async () => {
+    try {
+      await axios.get('/api/user/dummy', auth.getToken())
+      setSignInBtn(true)
+      setLoggedIn(true)
+    } catch {
+      setSignInBtn(true)
+      setLoggedIn(true)
+    }
+  }
+
+  useEffect(() => {validateToken()}, [])
+
+  return (
+    <nav>            
+      <NavLink
+        className="nav-link"
+        activeStyle={styles.activeLink}
+        to='/' exact
+      >Home</NavLink>
+
+      <NavLink
+        className="nav-link" 
+        activeStyle={styles.activeLink}
+        to='/reviews'
+      >Reviews</NavLink>
+
+      {signInBtn && <NavLink  
+        className="nav-link" 
+        activeStyle={styles.activeLink}
+        to='/signin'
+      >Sign In</NavLink>}
+      {loggedIn && <User />}
+    </nav>
+  )
 }
 
 const styles = {
-    activeLink: {
-      background: 'black'
-    }
+  activeLink: {
+    background: 'black'
   }
+}
 
 export default TopNav

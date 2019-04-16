@@ -1,10 +1,10 @@
-import React from 'react'
-import Signup from '../Login/signup'
+import React from 'react';
+import Signin from '../../Login/signin';
 
 export default () => {
     return (
         <div className="page-container">
-            <Signup />
+            <Signin />
         </div>
     )
 }

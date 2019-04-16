@@ -6,7 +6,7 @@ export default () => {
     const handleClick = () => {
         setRedirect(true)
     }
-    if(redirect) return <Redirect to="login"/>
+    if(redirect) return <Redirect to="signin"/>
     return (
         <div className="page-container">       
             <i>Last update 13/04/19</i> <br />

@@ -1,7 +1,7 @@
 import React, {useContext} from 'react'
 import axios from 'axios'
-import {FilmContext} from './films'
-import {auth} from '../utilities/auth'
+import {FilmContext} from './Films'
+import {auth} from '../../utilities/auth'
 
 export default ({handleShowData}) => {
     const {_id, picture} = useContext(FilmContext)

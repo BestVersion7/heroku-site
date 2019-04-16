@@ -25,11 +25,7 @@ export function PrivateRoute({ component: Component, ...rest }) {
           token ? (
             <Component {...props} />
           ) : (
-              <Redirect
-                to={{
-                  pathname: "/login" 
-                }}
-              />
+              <Redirect to='signin'/>
             )
         }
       />

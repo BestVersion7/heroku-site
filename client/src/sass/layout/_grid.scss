@@ -47,3 +47,32 @@
 	display: grid;
 	grid-template: auto/ auto 1fr
 }
+
+.navbar-user-container {
+	display: inline-block;
+	.navbar-user-ul {
+		display: inline;
+		padding: 0;
+		margin: 0;
+		.navbar-user-li {
+			list-style-type: none;
+			&:hover {
+				.navbar-user-link {
+					display: block
+				}
+			}
+			.navbar-user-text {
+				color: lightgoldenrodyellow
+			}
+			.navbar-user-link {
+				display: none;
+				width: 10em;
+				background: yellow;
+				position: absolute;
+			}
+			.navbar-user-img {
+				height: 1em
+			}
+		}		
+	}
+}

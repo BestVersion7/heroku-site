@@ -44,6 +44,7 @@ exports.login_user = (req, res, next) => {
             if(result) {
                 const token = jwt.sign(
                     {
+                        _id: user._id,
                         username: user.username,
                         picture_url_thumbnail: user.picture_url_thumbnail
                     },
@@ -90,8 +91,10 @@ exports.change_picture = (req, res) => {
                     )               
                     User.updateOne(
                         {_id: item._id},
-                        {picture_url_thumbnail: transformThumbnail},
-                        {picture_url_original: cb.secure_url}
+                        {
+                            picture_url_thumbnail: transformThumbnail,
+                            picture_url_original: cb.secure_url
+                        }
                     )
                     .then(() => res.send('changed picture'))
                     .catch(() => res.status(404).send('404 picture'))

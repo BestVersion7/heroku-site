@@ -1,28 +1,27 @@
 import React, {useState} from 'react'
 import CredentialFail from './credentialFail'
 import {auth} from '../utilities/auth'
-import {Redirect} from 'react-router-dom'
+import {NavLink, Redirect} from 'react-router-dom'
 import axios from 'axios';
 
 const Login = () => {
-
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [credFail, setCredFail] = useState(false)
     const [redirectPage, setRedirectPage] = useState(false)
-    const [redirectSignup, setRedirectSignup] = useState(false)
 
-    const handleLogin = e => {
+    const handleLogin = async e => {
         e.preventDefault()
-        axios.post('/api/user/login', {username, password})
-        .then(res => {
-            auth.setToken(res)
-            setRedirectPage(true)
-        }) 
-        .catch(() => {
+        try {
+           const data = await axios.post('/api/user/login', {username, password})
+           auth.setToken(data)
+           setRedirectPage(true)
+        //    this will run api call again
+           window.location.reload()
+        } catch(err) {
             setRedirectPage(false)
             setCredFail(true)
-        })
+        }
     }
     const handleUsernameChange = e => {
         e.preventDefault()
@@ -36,26 +35,24 @@ const Login = () => {
     }
 
     if(redirectPage) return <Redirect to = '/film' />
-    if(redirectSignup) return <Redirect to = '/signup' />
 
     return (
         <div>
-
-            <h2>Login Page</h2>
-            LOGIN TO SEE A HIDDEN PAGE!
+            <h2>Sign In Page</h2>
+            Sign-in TO SEE A HIDDEN PAGE!
             <p>(Username: fast; Password: fast)</p>
                 <form onSubmit={handleLogin}>
                     <label>Username</label>
                     <input onChange = {handleUsernameChange}/> <br />
                     <label>Password </label>
                     <input type="password" onChange = {handlePasswordChange}/> <br />
-                    <button className="btn-regular"> Login </button>
+                    <button type="submit" className="btn-regular"> Login </button>
                 </form>
-                <button 
-                    className="redirect-link-button"
-                    onClick={() =>setRedirectSignup(true)}>
+                <NavLink 
+                    className="btn-redirect-link"
+                    to="/signup">
                     Don't have an account? Sign up here!
-                </button>
+                </NavLink>
                 <br />
             <div style={{'height':'1em'}}>           
                 {credFail && <CredentialFail />}

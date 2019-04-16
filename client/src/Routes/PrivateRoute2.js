@@ -25,11 +25,7 @@ export function PrivateRoute2({ component: Component, ...rest }) {
           token ? (
             <Component {...props} />
           ) : (
-              <Redirect
-                to={{
-                  pathname: "/secret" 
-                }}
-              />
+              <Redirect to="secret"/>
             )
         }
       />

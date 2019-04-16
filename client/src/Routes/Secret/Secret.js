@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
 import axios from 'axios';
-import {auth} from '../utilities/auth'
+import {auth} from '../../utilities/auth'
 import {Redirect} from 'react-router-dom'
 
-const Login = () => {
+const Secret = () => {
     // const [loading, setLoading] = useState(false)
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -53,4 +53,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default Secret

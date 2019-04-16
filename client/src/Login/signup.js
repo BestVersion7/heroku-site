@@ -1,13 +1,12 @@
 import React, {useState} from 'react'
 import axios from 'axios'
 import CredentialFail from './credentialFail'
-import {Redirect} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 
 export default () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [credFail, setCredFail] = useState(false)
-    const [redirectSignup, setRedirectSignup] = useState(false)
 
     const handleSignup = async e => {
         e.preventDefault()
@@ -29,8 +28,6 @@ export default () => {
         setPassword(e.target.value)
         setCredFail(false)
     }
-
-    if(redirectSignup) return <Redirect to="/login" />
 
     return (
         <div>
@@ -55,9 +52,9 @@ export default () => {
             </form>
             <div style={{'height':'10em'}}>           
                 {credFail && <CredentialFail />}
-                <button className="redirect-link-button" onClick = {() => setRedirectSignup(true)}>
-                    Already have an account? Click here to login
-                </button>
+                <NavLink to="/signin" className="btn-redirect-link">
+                    Already have an account? Click here to signin
+                </NavLink>
             </div>
         </div>
     )

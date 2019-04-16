@@ -1,10 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
-import {auth} from '../utilities/auth'
+import {auth} from '../../utilities/auth'
 import FilmsUpload from './filmsUpload'
 import {TransitionGroup, CSSTransition} from 'react-transition-group'
 import FilmsLayout from './filmsLayout'
-import Signout from '../Login/signout'
 
 export const FilmContext = React.createContext()
 
@@ -14,7 +13,7 @@ const Film =  () => {
 
     const handleShowData = async () => {
       try {
-        const {data} = await axios.get('/api/movie', auth.getPayloadUsername())
+        const {data} = await axios.get('/api/movie', auth.getToken())
         setHiddenData(data)
         setLoading(true)
       } catch (err) {
@@ -26,9 +25,8 @@ const Film =  () => {
 
     if (!loading) return(<div>Loading...</div>)
     return (
-        <div>       
+        <div className="page-container">       
           User: {auth.getPayloadUsername()}
-          <Signout />
           <h2> Hidden Content </h2>
           <p> Images stored on Cloudinary </p>
           <FilmsUpload handleShowData={handleShowData}/>

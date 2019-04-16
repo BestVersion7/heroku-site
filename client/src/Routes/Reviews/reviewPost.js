@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import axios from 'axios'
-import {auth} from '../utilities/auth'
+import {auth} from '../../utilities/auth'
 import CredentialFail from './credentialFail'
 
 const ReviewPost = ({fetchComment}) => {

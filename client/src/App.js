@@ -1,17 +1,20 @@
 import React from 'react';
-import Header from './Header';
-import Home from './Routes/home';
-import Review from './Routes/review';
-import Login from './Routes/login';
+import Header from './Header/Header';
+import Home from './Routes/Home/Home';
+import Review from './Routes/Reviews/Review';
+import Signin from './Routes/Signin/Signin';
+import Signup from './Routes/Signup/Signup';
+
 import {PrivateRoute} from './Routes/PrivateRoute'
-import {Switch, Route, Redirect, BrowserRouter as Router } from 'react-router-dom'
-import Film from './Routes/film';
-import Signup from './Routes/signup'
-import Secret from './Routes/secret'
+import {Switch, Route, BrowserRouter as Router } from 'react-router-dom'
+import Films from './Routes/Film/Films';
+import Secret from './Routes/Secret/Secret'
 import About from './Routes/about'
-import Beauty from './Secret/Beauty'
+import Beauty from './Routes/Secret/Beauty'
 import TopNav from './Navbar/TopNav'
 import {PrivateRoute2} from './Routes/PrivateRoute2'
+import NoMatch from './Routes/noMatch'
+import Account from './Routes/Account/Account'
 
 const App = () => {
   return (
@@ -20,20 +23,20 @@ const App = () => {
       <Router>
         <div>
           <TopNav />
-
           <Switch>
             <Route path='/' exact component={Home} />
             <Route path='/signup' component={Signup} />
-            <Route path='/login' component={Login} />
+            <Route path='/signin' component={Signin} />
             <Route path='/reviews' component={Review} />
-            <PrivateRoute path='/film' component={Film} />
+            <PrivateRoute path='/film' component={Films} />
             <Route path='/about' component={About} />
+            <Route path='/account' component={Account} />
             
             {/* separate */}
             <Route path='/secret' component={Secret} />            
             <PrivateRoute2 path='/beauty' component={Beauty}/>
             
-            <Redirect to='/' />
+            <Route component={NoMatch} />
           </Switch>
         </div>
       </Router>

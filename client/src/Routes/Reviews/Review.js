@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
-import ReviewLayout from './ReviewLayout'
-import ReviewPost from './ReviewPost'
+import ReviewLayout from './reviewLayout'
+import ReviewPost from './reviewPost'
 
 export const UserContext = React.createContext()
 
@@ -23,7 +23,7 @@ const Review = () => {
 
     if(!loading) return <div>Loading...</div>
     return (
-        <div>
+        <div className="page-container">
             <br />
             <ReviewPost fetchComment={fetchComment}/>
             <hr />

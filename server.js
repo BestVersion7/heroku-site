@@ -26,7 +26,8 @@ mongoose.connect(db, {
     useNewUrlParser: true
 })
 .then(console.log('mongoose running'))
-
+.catch(() => console.log('mongoose not running'))
+ 
 //connect cloudinary
 cloudinary.config({
     CLOUDINARY_URL:process.env.CLOUDINARY_URL
