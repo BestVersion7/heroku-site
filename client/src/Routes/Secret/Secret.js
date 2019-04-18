@@ -27,12 +27,11 @@ const Secret = () => {
         setPassword(e.target.value)
     }
    
-    if(redirect) return <Redirect to="/beauty" />
+    if(redirect) return <Redirect to="/mktclass" />
     
     return (
         <div>
-            Beauty Page
-            <p>Login:</p>
+=            <p>Login:</p>
             <form onSubmit={handleFormSubmit}>
                 <label for="user"> User </label>
                 <input 

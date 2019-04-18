@@ -3,15 +3,15 @@ import {auth} from '../../utilities/auth'
 import axios from 'axios'
 
 export default () => {
-    const [image, setImage] = useState('')
+    const [image, setImage] = useState(null)
     const [file, setFile] = useState(null)
 
     const ShowUserProfilePic = async () => {
         try {
-            const {data} = await axios.get(`api/user/${auth.getPayloadUsername()}`)
+            const {data} = await axios.get(`api/user/${auth.getPayloadUsername()}`, auth.getToken())
             setImage(data.picture_url_thumbnail)              
         } catch(err) {
-            alert(err)
+            
         }
     }
 
@@ -43,7 +43,7 @@ export default () => {
                 <button type="submit">Upload</button>
             </form>
             <img src={image} alt="profilepic" />
-            <p>Username: {auth.getPayloadUsername()}</p>
+            {/* User: {auth.getPayloadUsername()} */}
         </div>
     )
 }

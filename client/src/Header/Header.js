@@ -4,7 +4,7 @@ const Header = () => {
     return (
         <div className="header-container"> 
             <div className="header-container-text"> 
-                Food <br /> For <br /> Thought
+               <br />Golden Wine
             </div>
         </div>
     )

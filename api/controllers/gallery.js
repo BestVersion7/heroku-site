@@ -44,8 +44,9 @@ exports.PostNewImages = (req, res) => {
     cloudinary.uploader.upload(
         dataUri(req).content,
         {
-            folder: '0604 dze',
-            public_id: `${req.file.fieldname}-${Date.now()}`
+            folder: 'mkt317',
+            public_id: `${req.file.fieldname}-${Date.now()}`,
+            resource_type: "video"
         },
         (err, results) => {
             if(results) {

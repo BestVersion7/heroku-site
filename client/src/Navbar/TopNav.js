@@ -1,25 +1,26 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import {NavLink} from 'react-router-dom'
 import {auth} from '../utilities/auth'
 import User from './User';
-import axios from 'axios'
+import axios from 'axios';
+import {UserContext} from '../App'
 
 const TopNav = () => {
-  const [signInBtn, setSignInBtn] = useState(true)
-  const [loggedIn, setLoggedIn] = useState(true)
+  // const [signInBtn, setSignInBtn] = useState(true)
+  const {signedIn} = useContext(UserContext)
+  // console.log(signedIn)
 
-  const validateToken = async () => {
-    try {
-      await axios.get('/api/user/dummy', auth.getToken())
-      setSignInBtn(true)
-      setLoggedIn(true)
-    } catch {
-      setSignInBtn(true)
-      setLoggedIn(true)
-    }
-  }
+  // const validateToken = async () => {
+  //   try {
+  //     await axios.get('/api/user/dummy', auth.getToken())
 
-  useEffect(() => {validateToken()}, [])
+  //     setSignInBtn(false)
+  //   } catch {
+
+  //   }
+  // }
+
+  // useEffect(() => {validateToken()}, [])
 
   return (
     <nav>            
@@ -35,12 +36,13 @@ const TopNav = () => {
         to='/reviews'
       >Reviews</NavLink>
 
-      {signInBtn && <NavLink  
+      {signedIn ? <User /> : (
+      <NavLink  
         className="nav-link" 
         activeStyle={styles.activeLink}
         to='/signin'
-      >Sign In</NavLink>}
-      {loggedIn && <User />}
+      >Sign In</NavLink>)}
+
     </nav>
   )
 }

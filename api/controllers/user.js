@@ -45,11 +45,13 @@ exports.login_user = (req, res, next) => {
                 const token = jwt.sign(
                     {
                         _id: user._id,
-                        username: user.username,
-                        picture_url_thumbnail: user.picture_url_thumbnail
+                        username: user.username,   
                     },
                     process.env.PRIVATE_KEY,
-                    {expiresIn: '10m'}
+                    {
+                        audience: user.username, 
+                        expiresIn: '10m'
+                    }
                 )
                 return res.json({
                     results: 'success',
@@ -113,7 +115,6 @@ exports.dummy = (req, res) => {
 
 exports.get_user = (req, res) => {
     User.findOne({username: req.params.username})
-    .select("picture_url_thumbnail")
     .then(item => {
         if(item !==null) {
             return res.send(item)

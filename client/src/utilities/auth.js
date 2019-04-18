@@ -28,5 +28,6 @@ export const auth = {
     },
     signout() {
         localStorage.removeItem('jwt_token')
+        window.location.reload()
     }
 }

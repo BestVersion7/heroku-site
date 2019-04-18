@@ -2,7 +2,7 @@
 
 .header-container{
 	font-family: Verdana;
-	color: rgb(245, 48, 113);
+	color: gold;
 	height: 4em;
 	background: url('../assets/header.jpg');
 	.header-container-text {
@@ -57,18 +57,31 @@
 		.navbar-user-li {
 			list-style-type: none;
 			&:hover {
-				.navbar-user-link {
+				.navbar-user-dropdown-container {
 					display: block
 				}
 			}
 			.navbar-user-text {
 				color: lightgoldenrodyellow
 			}
-			.navbar-user-link {
+			.navbar-user-dropdown-container {
 				display: none;
-				width: 10em;
+				width: 5em;
 				background: yellow;
 				position: absolute;
+				.navbar-user-dropdown-items {
+					text-decoration: none;
+					display: block;
+					border: none;
+					cursor: pointer;
+					background: none;
+					width: 100%;
+					text-align: left;
+					padding: 0;
+					&:hover {
+						background: lightblue
+					}
+				}
 			}
 			.navbar-user-img {
 				height: 1em

@@ -16,28 +16,54 @@ import {PrivateRoute2} from './Routes/PrivateRoute2'
 import NoMatch from './Routes/noMatch'
 import Account from './Routes/Account/Account'
 
+import {auth} from './utilities/auth'
+import {useEffect, useState} from 'react'
+import axios from 'axios'
+
+export const UserContext = new React.createContext()
+
 const App = () => {
+  const [userData, setUserData] = useState('')
+  const [signedIn, setSignedIn] = useState(false)
+
+  const validateToken = async () => {
+    try {
+      // check to see if token works
+      await axios.get(`/api/user/dummy`, auth.getToken())
+      // retrieve data from username
+      const {data} = await axios.get(`/api/user/${auth.getPayloadUsername()}`, auth.getToken())
+      setSignedIn(true)
+      setUserData(data)
+    } catch {
+
+    }
+  }
+
+  useEffect(() => {validateToken()}, [])
+
   return (
     <div>
       <Header />
       <Router>
         <div>
-          <TopNav />
-          <Switch>
-            <Route path='/' exact component={Home} />
-            <Route path='/signup' component={Signup} />
-            <Route path='/signin' component={Signin} />
-            <Route path='/reviews' component={Review} />
-            <PrivateRoute path='/film' component={Films} />
-            <Route path='/about' component={About} />
-            <Route path='/account' component={Account} />
-            
-            {/* separate */}
-            <Route path='/secret' component={Secret} />            
-            <PrivateRoute2 path='/beauty' component={Beauty}/>
-            
-            <Route component={NoMatch} />
-          </Switch>
+          <UserContext.Provider value={{userData, signedIn}}>
+            <TopNav />
+            <Switch>
+              <Route path='/' exact component={Home} />
+              <Route path='/signup' component={Signup} />
+              <Route path='/signin' component={Signin} />
+              <Route path='/reviews' component={Review} />
+              <PrivateRoute path='/film' component={Films} />
+              <Route path='/about' component={About} />
+              <PrivateRoute path='/account' component={Account} />
+              
+              {/* separate */}
+              <Route path='/secret' component={Secret} />            
+              <Route path='/mktclass' component={Beauty}/>
+              
+              <Route component={NoMatch} />
+            </Switch>
+          </UserContext.Provider>
         </div>
       </Router>
     </div>

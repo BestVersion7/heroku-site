@@ -7,11 +7,11 @@ export default ({fetchImages}) => {
     const handleSubmit = e => {
         e.preventDefault()
         const formData = new FormData()
-        formData.append('dze', file)
+        formData.append('mkt', file)
         
         const config = axios.defaults.headers.common['Content-Type'] = 'multipart/form-data'
         axios.post('/api/gallery', formData, config)
-        .then(() => fetchImages())
+        .then(() => {alert('success'); fetchImages(); setFile(null)})
         .catch(err => alert(err))
     }
 
@@ -25,7 +25,7 @@ export default ({fetchImages}) => {
                 onSubmit = {handleSubmit}
             >
                 <input 
-                    name="dze"
+                    name="mkt"
                     type="file" 
                     onChange={handleChangeUpload}
                 />
