@@ -16,11 +16,6 @@ export const auth = {
         const {username} = jwt.decode(token)
         return username
     },
-    getPayloadProfilePic() {
-        const token = localStorage.getItem('jwt_token').split(" ")[1]
-        const {picture_url_thumbnail} = jwt.decode(token)
-        return picture_url_thumbnail
-    },
     getPayloadId() {
         const token = localStorage.getItem('jwt_token').split(" ")[1]
         const {_id} = jwt.decode(token)

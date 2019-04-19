@@ -9,24 +9,21 @@ export const FilmContext = React.createContext()
 
 const Film =  () => {
     const [hiddenData, setHiddenData] = useState([])
-    const [loading, setLoading] = useState(false)
 
     const handleShowData = async () => {
       try {
         const {data} = await axios.get('/api/movie', auth.getToken())
-        setHiddenData(data)
-        setLoading(true)
-      } catch (err) {
+        setHiddenData(data)  
+      } catch {
 
-      }       
+      }
     }
 
     useEffect(() => {handleShowData()}, [])
 
-    if (!loading) return(<div>Loading...</div>)
     return (
-        <div className="page-container">       
-          User: {auth.getPayloadUsername()}
+        <div className="page-container">  
+          {/* User: {auth.getPayloadUsername()} */}
           <h2> Hidden Content </h2>
           <p> Images stored on Cloudinary </p>
           <FilmsUpload handleShowData={handleShowData}/>

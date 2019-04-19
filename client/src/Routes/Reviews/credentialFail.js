@@ -9,7 +9,7 @@ export default () => {
         setRedirectPage(true)
     }
 
-    if(redirectPage) return <Redirect to="/login" />
+    if(redirectPage) return <Redirect to="/signin" />
 
     return (
         <CSSTransition
@@ -19,9 +19,9 @@ export default () => {
             appear={true}
         >
             <div>
-                Please Login to Post <br />
+                Please signin to post
                 <button className="btn-regular" onClick = {handleRedirect}>
-                    Login
+                    Signin
                 </button>
             </div>
         </CSSTransition>

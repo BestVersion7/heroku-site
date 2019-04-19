@@ -6,6 +6,7 @@ import {UserContext} from '../App'
 const User = () => {
     const {userData} = useContext(UserContext)
     const {picture_url_thumbnail} = userData
+
     return (
         <div className="navbar-user-container">
             <ul className="navbar-user-ul">
@@ -18,7 +19,7 @@ const User = () => {
                     <span className="navbar-user-text">Welcome {auth.getPayloadUsername()}!</span>
                     <div className="navbar-user-dropdown-container">
                         <NavLink className="navbar-user-dropdown-items" to="/account">Account</NavLink>
-                        <button className="navbar-user-dropdown-items" onClick={auth.signout}>Sign Out</button>
+                        <NavLink className="navbar-user-dropdown-items" to="/" exact onClick={auth.signout}>Sign out</NavLink>
                     </div>
                 </li>
             </ul>

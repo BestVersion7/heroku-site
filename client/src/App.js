@@ -20,7 +20,7 @@ import {auth} from './utilities/auth'
 import {useEffect, useState} from 'react'
 import axios from 'axios'
 
-export const UserContext = new React.createContext()
+export const UserContext = React.createContext()
 
 const App = () => {
   const [userData, setUserData] = useState('')
@@ -28,8 +28,6 @@ const App = () => {
 
   const validateToken = async () => {
     try {
-      // check to see if token works
-      await axios.get(`/api/user/dummy`, auth.getToken())
       // retrieve data from username
       const {data} = await axios.get(`/api/user/${auth.getPayloadUsername()}`, auth.getToken())
       setSignedIn(true)
@@ -40,7 +38,6 @@ const App = () => {
   }
 
   useEffect(() => {validateToken()}, [])
-
   return (
     <div>
       <Header />
@@ -59,7 +56,7 @@ const App = () => {
               
               {/* separate */}
               <Route path='/secret' component={Secret} />            
-              <Route path='/mktclass' component={Beauty}/>
+              <PrivateRoute2 path='/beauty' component={Beauty}/>
               
               <Route component={NoMatch} />
             </Switch>

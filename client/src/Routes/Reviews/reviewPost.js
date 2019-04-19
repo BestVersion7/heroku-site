@@ -1,10 +1,16 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import axios from 'axios'
-import {auth} from '../../utilities/auth'
 import CredentialFail from './credentialFail'
+import {UserContext} from '../../App'
 
 const ReviewPost = ({fetchComment}) => {
-    const [addComment, setAddComment] = useState('hello')
+    const {userData} = useContext(UserContext)
+    const {
+        username,
+        picture_url_thumbnail
+    } = userData
+
+    const [addComment, setAddComment] = useState('')
     const [credentialFail, setCredentialFail] = useState(false)
 
     const handleChange = e => {
@@ -15,8 +21,8 @@ const ReviewPost = ({fetchComment}) => {
         e.preventDefault()
         try {
             await axios.post('/api/usercomment', {
-                username: auth.getPayloadUsername(),
-                picture_url_thumbnail: auth.getPayloadProfilePic(),
+                username,
+                picture_url_thumbnail,
                 comment: addComment
             })
             setAddComment('')
@@ -29,6 +35,7 @@ const ReviewPost = ({fetchComment}) => {
     return (
         <div>
             {credentialFail && <CredentialFail />}
+            Signin to Post
             <form onSubmit={handleSubmit}>
                 <textarea
                     placeholder="Add your Review here"

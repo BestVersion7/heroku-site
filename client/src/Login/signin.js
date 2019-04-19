@@ -16,7 +16,6 @@ const Login = () => {
            const data = await axios.post('/api/user/login', {username, password})
            auth.setToken(data)
            setRedirectPage(true)
-        //    this will run api call again
            window.location.reload()
         } catch(err) {
             setRedirectPage(false)

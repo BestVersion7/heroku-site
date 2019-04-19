@@ -1,26 +1,10 @@
-import React, {useState, useEffect, useContext} from 'react'
+import React, {useContext} from 'react'
 import {NavLink} from 'react-router-dom'
-import {auth} from '../utilities/auth'
 import User from './User';
-import axios from 'axios';
 import {UserContext} from '../App'
 
 const TopNav = () => {
-  // const [signInBtn, setSignInBtn] = useState(true)
   const {signedIn} = useContext(UserContext)
-  // console.log(signedIn)
-
-  // const validateToken = async () => {
-  //   try {
-  //     await axios.get('/api/user/dummy', auth.getToken())
-
-  //     setSignInBtn(false)
-  //   } catch {
-
-  //   }
-  // }
-
-  // useEffect(() => {validateToken()}, [])
 
   return (
     <nav>            

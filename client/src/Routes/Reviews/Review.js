@@ -3,7 +3,7 @@ import axios from 'axios'
 import ReviewLayout from './reviewLayout'
 import ReviewPost from './reviewPost'
 
-export const UserContext = React.createContext()
+export const ReviewContext = React.createContext()
 
 const Review = () => {
     const [comments, setComments] = useState([])
@@ -29,9 +29,9 @@ const Review = () => {
             <hr />
             {loading && comments.map(item => (
                 <div key={item._id}>
-                    <UserContext.Provider value={item}>
+                    <ReviewContext.Provider value={item}>
                         <ReviewLayout />
-                    </UserContext.Provider>
+                    </ReviewContext.Provider>
                 </div>
             ))}
         </div>

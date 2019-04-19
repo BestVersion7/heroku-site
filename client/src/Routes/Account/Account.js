@@ -25,7 +25,7 @@ export default () => {
         //no need for jwt authentication because it is done in server
         try {
             await axios.put(`/api/user/${auth.getPayloadId()}`, formData, config)
-            ShowUserProfilePic()
+            window.location.reload()
         } catch(err) {
             alert(err)
         }        

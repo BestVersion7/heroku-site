@@ -1,28 +1,27 @@
 import React, {useState, useEffect} from 'react'
-import {auth} from '../utilities/auth'
 import {Route, Redirect} from 'react-router-dom'
+import {auth} from '../utilities/auth'
 import axios from 'axios'
 
 export function PrivateRoute({ component: Component, ...rest }) {
-  const [token, setToken] = useState(true)
-  
-  //this allows browser refresh
-  //run through server verification and if validates, then proceeds
+  const [signedIn, setSignedIn] = useState(true)
+
   const validateToken = async () => {
     try {
-      await axios.get('/api/user/dummy', auth.getToken())
+      // await axios.get('/api/user/dummy', auth.getToken())
+      await axios.get(`/api/user/${auth.getPayloadUsername()}`, auth.getToken())
     } catch {
-      setToken(false)
+      setSignedIn(false)
     }
   }
-  useEffect(() => {
-    validateToken()
-  }, [])
+
+  useEffect(() => {validateToken()}, [])
+
   return (
       <Route
         {...rest}
         render={props =>
-          token ? (
+          signedIn ? (
             <Component {...props} />
           ) : (
               <Redirect to='signin'/>

@@ -1,5 +1,5 @@
 import React, {useContext} from 'react'
-import {UserContext} from './Review'
+import {ReviewContext} from './Review'
 import {formatDate} from '../../utilities/formatDate'
 
 const ReviewLayout = () => {
@@ -8,7 +8,7 @@ const ReviewLayout = () => {
         comment, 
         date, 
         picture_url_thumbnail
-    } = useContext(UserContext)
+    } = useContext(ReviewContext)
     
     return (
             <div>
