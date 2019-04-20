@@ -45,6 +45,7 @@ const App = () => {
         <div>
           <UserContext.Provider value={{userData, signedIn}}>
             <TopNav />
+            <div style={{"height": "5em"}}></div>
             <Switch>
               <Route path='/' exact component={Home} />
               <Route path='/signup' component={Signup} />
