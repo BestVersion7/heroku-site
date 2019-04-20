@@ -9,7 +9,7 @@ export default () => {
     if(redirect) return <Redirect to="signin"/>
     return (
         <div className="page-container">       
-            <i>Last update 13/04/19</i> <br />
+            <i>Last update 20/04/19</i> <br />
             <h3>Full-stack Progressive Web App</h3>
             <p>This app works offline. </p>
             <p>Technologies Used: Front-End</p>

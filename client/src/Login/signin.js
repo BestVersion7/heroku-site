@@ -37,7 +37,6 @@ const Login = () => {
 
     return (
         <div>
-            <h2>Sign In Page</h2>
             Sign-in TO SEE A HIDDEN PAGE!
             <p>(Username: fast; Password: fast)</p>
                 <form onSubmit={handleLogin}>

@@ -11,7 +11,6 @@ import Films from './Routes/Film/Films';
 import Secret from './Routes/Secret/Secret'
 import About from './Routes/about'
 import Beauty from './Routes/Secret/Beauty'
-import TopNav from './Navbar/TopNav'
 import {PrivateRoute2} from './Routes/PrivateRoute2'
 import NoMatch from './Routes/noMatch'
 import Account from './Routes/Account/Account'
@@ -40,12 +39,11 @@ const App = () => {
   useEffect(() => {validateToken()}, [])
   return (
     <div>
-      <Header />
       <Router>
         <div>
           <UserContext.Provider value={{userData, signedIn}}>
-            <TopNav />
-            <div style={{"height": "5em"}}></div>
+            <Header />
+            <div className="blank-padding"></div>
             <Switch>
               <Route path='/' exact component={Home} />
               <Route path='/signup' component={Signup} />
