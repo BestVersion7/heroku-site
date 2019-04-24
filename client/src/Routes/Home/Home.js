@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {Redirect} from 'react-router-dom'
+import DrinkCarousel from './drinkCarousel'
 
 export default () => {
     const [redirect, setRedirect] = useState(false)
@@ -8,7 +9,8 @@ export default () => {
     }
     if(redirect) return <Redirect to="signin"/>
     return (
-        <div className="page-container">       
+        <div className="page-container">   
+            <DrinkCarousel />    
             <i>Last update 20/04/19</i> <br />
             <h3>Full-stack Progressive Web App</h3>
             <p>This app works offline. </p>
