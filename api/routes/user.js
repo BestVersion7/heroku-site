@@ -18,4 +18,7 @@ router.put('/:id', verifyToken, upload.single('picture'), userController.change_
 
 router.get('/', verifyToken, userController.user_all)
 
+//testing
+// router.post('/test', upload.single('picture'), userController.test_upload)
+
 module.exports = router

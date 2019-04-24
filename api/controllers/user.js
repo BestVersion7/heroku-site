@@ -84,11 +84,12 @@ exports.change_picture = (req, res) => {
                 if(cb) {
                     //transform to thumbnail
                     const transformThumbnail = cloudinary.url(
-                        `${cb.public_id}.${cb.format}`,
+                        cb.public_id,
                         {
                             height: 50,
                             width: 50,
-                            crop: "scale"
+                            crop: "scale",
+                            secure: true
                         }
                     )               
                     User.updateOne(
@@ -124,3 +125,32 @@ exports.get_user = (req, res) => {
     })
     .catch(err => res.status(500).send('500err'))
 }
+
+// exports.test_upload = (req, res) => {
+//     User.findOne({_id: "5c8929d0aa815b293c260e97"})
+//     .then(item => {
+//         const file = formatImage(req).content
+//         cloudinary.uploader.upload(
+//             file,
+//             {
+//                 folder_name: '2004 test',
+//                 public_id: `${req.file.fieldname} - ${Date.now()}`
+//             },
+//             (err, cb) => {
+//                 if(cb) {
+//                     const transformed = cloudinary.url(
+//                         cb.public_id,
+//                         {
+//                             height: 50,
+//                             width: 50,
+//                             crop: "scale",
+//                             secure: true
+//                         }
+//                     )
+//                     console.log(transformed)
+//                 }
+//             }
+//         )
+//     })
+//     .catch(err => console.log(err))
+// }
