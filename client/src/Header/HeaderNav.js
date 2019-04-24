@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
 import {NavLink} from 'react-router-dom'
-import HeaderNavUser from './HeaderNavUser';
+import HeaderNavUser from './headerNavUser';
 import {UserContext} from '../App'
 
 const HeaderNav = () => {

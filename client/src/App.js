@@ -14,6 +14,8 @@ import Beauty from './Routes/Secret/Beauty'
 import {PrivateRoute2} from './Routes/PrivateRoute2'
 import NoMatch from './Routes/noMatch'
 import Account from './Routes/Account/Account'
+import Footer from './Footer/Footer'
+import Privacy from './Routes/Legal/Privacy'
 
 import {auth} from './utilities/auth'
 import {useEffect, useState} from 'react'
@@ -52,13 +54,14 @@ const App = () => {
               <PrivateRoute path='/film' component={Films} />
               <Route path='/about' component={About} />
               <PrivateRoute path='/account' component={Account} />
-              
-              {/* separate */}
+              <Route path="/legal" component={Privacy} />
+
               <Route path='/secret' component={Secret} />            
               <PrivateRoute2 path='/beauty' component={Beauty}/>
               
               <Route component={NoMatch} />
             </Switch>
+            <Footer />
           </UserContext.Provider>
         </div>
       </Router>

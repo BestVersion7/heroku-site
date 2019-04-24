@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import HeaderNav from './HeaderNav'
+import HeaderNav from './headerNav'
 import wine from '../assets/wine.png'
 import hamburgerIcon from '../assets/hamburgerIcon.png'
 import exitIcon from '../assets/exitIcon.png'
