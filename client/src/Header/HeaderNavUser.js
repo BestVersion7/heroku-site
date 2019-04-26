@@ -2,7 +2,6 @@ import React, {useContext} from 'react'
 import {auth} from '../utilities/auth'
 import {NavLink} from 'react-router-dom'
 import {UserContext} from '../App'
-import expandIcon from '../assets/expandIcon.png'
 
 const HeaderNavUser = () => {
     const {userData} = useContext(UserContext)
@@ -18,7 +17,7 @@ const HeaderNavUser = () => {
                         className="navbar-user-img"
                     />
                     Welcome {auth.getPayloadUsername()}!
-                    <img src={expandIcon} className="expand-icon" alt="exp" />
+                    <img src="https://res.cloudinary.com/crimson-flamingo/image/upload/v1556245482/230419%20Icons/expandIcon.png" className="expand-icon" alt="exp" />
                 </div>
 
                 <div className="navbar-user-dropdown-container">

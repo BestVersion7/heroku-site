@@ -43,7 +43,7 @@ const Login = () => {
                     <label>Username</label>
                     <input onChange = {handleUsernameChange}/> <br />
                     <label>Password </label>
-                    <input type="password" onChange = {handlePasswordChange}/> <br />
+                    <input type="current-password" onChange = {handlePasswordChange}/> <br />
                     <button type="submit" className="btn-regular"> Login </button>
                 </form>
                 <NavLink 

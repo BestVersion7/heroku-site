@@ -1,4 +1,9 @@
-@import 'helpers/mediaquery';
+// main
+#root {
+	max-width: 100em;
+	margin: auto;
+	background: rgb(236, 227, 222)
+}
 
 .page-container {
 	margin: 0 2.5%
@@ -37,4 +42,26 @@
 	grid-template: auto/ auto 1fr
 }
 
+
+// homepage drink carousel
+.drink-carousel-container {
+	margin: 1em 2em;
+	text-align: center;
+	color: darkorange;
+	font-weight: bold;
+	.carousel-grid {
+		transform: scale(.9);
+		border: solid black;
+		.carousel-link-container {
+			text-decoration: none;
+			color: darkred;
+			.carousel-img {
+				margin: auto;
+			}
+			.carousel-text {
+				font-size: .8em
+			}
+		}
+	}
+}
 

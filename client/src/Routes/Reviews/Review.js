@@ -24,7 +24,6 @@ const Review = () => {
     if(!loading) return <div>Loading...</div>
     return (
         <div className="page-container">
-            <br />
             <ReviewPost fetchComment={fetchComment}/>
             <hr />
             {loading && comments.map(item => (

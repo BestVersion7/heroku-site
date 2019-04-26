@@ -1,10 +1,13 @@
+
 .header-container {
 	background: darkred;
 	position: fixed;
 	width: 100%;
 	height: 3em;
 	z-index: 2;
-	
+	@include media-query(100em) {
+		width: 100em
+	}
 	.header-icon {
 		height: 2em;
 		padding: .5em;
@@ -41,6 +44,9 @@
 			background: none;
 			width: auto;
 			height: 3em;
+		}
+		@include media-query(100em) {
+			position: absolute
 		}
 
 		.nav-link-padding {
