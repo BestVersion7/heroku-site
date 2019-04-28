@@ -5,8 +5,36 @@
 	background: rgb(236, 227, 222)
 }
 
+.home-container {
+	.home-section1 {
+		background-image: url("https://res.cloudinary.com/crimson-flamingo/image/upload/v1556414789/270419%20gem/yellowsmokebg.jpg");
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		min-height: 100vh;
+		@include media-query(30em) {
+			// parallax
+			background-attachment: fixed
+		};
+	}
+	.home-section2 {
+		background-image: url("https://res.cloudinary.com/crimson-flamingo/image/upload/v1556414910/270419%20gem/goldbg.png");
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-color: indianred;
+		min-height: 100vh;
+		background-blend-mode: luminosity;
+		@include media-query(30em) {
+			// parallax
+			background-attachment: fixed
+		}
+	}
+
+}
+
 .page-container {
-	margin: 0 2.5%
+	margin: 0 2.5%;
 }
 
 .gallery-container {

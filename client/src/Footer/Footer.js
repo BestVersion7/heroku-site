@@ -13,7 +13,7 @@ const Footer = () => {
                 <img height="40" src="https://res.cloudinary.com/crimson-flamingo/image/upload/v1556071041/230419%20Icons/instagram.png" alt="inst" />
             </a>
             <a href="https://facebook.com" title="Facebook">
-                <img height="40" src="https://res.cloudinary.com/crimson-flamingo/image/upload/v1556071041/230419%20Icons/facebook.png" alt="fb" />
+                <img height="40" src="https://res.cloudinary.com/crimson-flamingo/image/upload/v1556415888/230419%20Icons/facebook.png" alt="fb" />
             </a>
             <br />
             <span dangerouslySetInnerHTML={{ "__html": "&copy;" }} /> 
