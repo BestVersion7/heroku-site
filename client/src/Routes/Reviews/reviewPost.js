@@ -40,6 +40,7 @@ const ReviewPost = ({fetchComment}) => {
                 <textarea
                     placeholder="Add your Review here"
                     onChange={handleChange}
+                    value={addComment}
                 />
                 <br />
                 <button
