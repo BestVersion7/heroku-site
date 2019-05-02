@@ -9,13 +9,14 @@ import {PrivateRoute} from './Routes/PrivateRoute'
 import {Switch, Route, BrowserRouter as Router } from 'react-router-dom'
 import Films from './Routes/Film/Films';
 import Secret from './Routes/Secret/Secret'
-import About from './Routes/about'
+import About from './Routes/About/about'
 import Beauty from './Routes/Secret/Beauty'
 import {PrivateRoute2} from './Routes/PrivateRoute2'
 import NoMatch from './Routes/noMatch'
 import Account from './Routes/Account/Account'
 import Footer from './Footer/Footer'
 import Privacy from './Routes/Legal/Privacy'
+import Drinks from './Routes/Drinks/Drinks'
 
 import {auth} from './utilities/auth'
 import {useEffect, useState} from 'react'
@@ -55,6 +56,7 @@ const App = () => {
               <Route path='/about' component={About} />
               <PrivateRoute path='/account' component={Account} />
               <Route path="/legal" component={Privacy} />
+              <Route path="/drinks" component={Drinks} />
 
               <Route path='/secret' component={Secret} />            
               <PrivateRoute2 path='/beauty' component={Beauty}/>

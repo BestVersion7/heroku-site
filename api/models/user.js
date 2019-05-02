@@ -25,6 +25,11 @@ const userSchema = new Schema({
     picture_url_original: {
         type: String,
         default: 'https://res.cloudinary.com/crimson-flamingo/image/upload/c_scale,w_42/v1555079519/1104%20profile/picture-1555079520338.png'
+    },
+    email: {
+        type: String,
+        required: true,
+        default: 'test@email.com'
     }
 })
 

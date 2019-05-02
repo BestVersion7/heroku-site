@@ -11,7 +11,6 @@ const app = express();
 const movieRouter = require('./api/routes/movie')
 const userRouter = require('./api/routes/user')
 const galleryRouter = require('./api/routes/gallery')
-const userCommentRouter = require('./api/routes/userComment')
 const drinkRouter = require('./api/routes/drink')
 
 //cross origin sharing (different domain)
@@ -37,7 +36,6 @@ cloudinary.config({
 //Express routes
 app.use('/api/movie', movieRouter)
 app.use('/api/user', userRouter)
-app.use('/api/usercomment', userCommentRouter)
 app.use('/api/drinks', drinkRouter)
 
 //Gallery unused
