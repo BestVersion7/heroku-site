@@ -7,7 +7,7 @@ const Drinks = () => {
 
     const fetchDrinks = async () => {
         try {
-            const {data} = await axios.get('/api/drinks/popular')
+            const {data} = await axios.get('/api/drinks')
             setDrinks(data)
         } catch {
 
@@ -15,18 +15,22 @@ const Drinks = () => {
     }
 
     useEffect(() => {fetchDrinks()}, [])
+
     return (
         <div>
+            
             {drinks.map(({
-                name, 
-                ingredients,
-                directions,
+                _id,
+                name,
                 drink_url_thumbnail,
+                ingredients,
+                directions
             }) => (
-                <div>
-                    <div>
-                        <img src={drink_url_thumbnail} alt="name" />
-                    </div>
+                <div key={_id}>
+                    <p>{name}</p>
+                    <img src={drink_url_thumbnail} alt={name} />
+                    <p>{ingredients}</p>
+                    <p>{directions}</p>
                 </div>
             ))}
         </div>

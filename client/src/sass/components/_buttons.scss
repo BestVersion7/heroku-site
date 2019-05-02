@@ -1,49 +1,54 @@
-.btn-regular {
-    color: white;
-    background: green;
-    font-weight: bold;
-    border: solid black;
-}
+// .btn-regular {
+//     color: white;
+//     background: green;
+//     font-weight: bold;
+//     border: solid black;
+// }
 
-.regular-button-danger {
-    @extend .btn-regular;
-    background: red
-}
+// .regular-button-danger {
+//     @extend .btn-regular;
+//     background: red
+// }
 
-.btn-remove {
-    background: black;
-    border: none;
-    cursor: pointer;
-    color: rgb(56, 211, 120);
-    opacity: .3;
-    &:hover {
-        opacity: 1;
-    }
-}
+// .btn-remove {
+//     background: black;
+//     border: none;
+//     cursor: pointer;
+//     color: rgb(56, 211, 120);
+//     opacity: .3;
+//     &:hover {
+//         opacity: 1;
+//     }
+// }
 
-.btn-remove-absolute {
-    position: absolute;
-    top: 0;
-    right:0
-}
+// .btn-remove-absolute {
+//     position: absolute;
+//     top: 0;
+//     right:0
+// }
 
-.btn-logout {
-    @extend .btn-regular;
-    background: gray;
-    position: absolute;
-    top: 4.7em;
-    right: 0;
-    cursor: pointer
-}
+// .btn-logout {
+//     @extend .btn-regular;
+//     background: gray;
+//     position: absolute;
+//     top: 4.7em;
+//     right: 0;
+//     cursor: pointer
+// }
 
-.btn-redirect-link {
-    background: none;
-    border: none;
-    color: blue;
-    cursor: pointer;
-    text-decoration: underline;
-    font-style: italic;
-    &:hover {
-        background: darkgray
-    }
+// .btn-redirect-link {
+//     background: none;
+//     border: none;
+//     color: blue;
+//     cursor: pointer;
+//     text-decoration: underline;
+//     font-style: italic;
+//     &:hover {
+//         background: darkgray
+//     }
+// }
+
+.btn-header {
+    position: absolute !important;
+    right: 0 
 }

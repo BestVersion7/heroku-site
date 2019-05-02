@@ -1,7 +1,7 @@
 import Slider from 'react-slick'
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
-import {settings} from './carouselSettings'
+import {settings} from '../../utilities/carouselSettings'
 
 const Carousel = () => {
     const [drinks, setDrinks] = useState([])

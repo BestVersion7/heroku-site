@@ -1,4 +1,5 @@
 import React from 'react'
+// import arrow_back from '@material-ui/icons/arrow_back'
 
 const NextArrow = (props) => {
     const { className, onClick } = props;

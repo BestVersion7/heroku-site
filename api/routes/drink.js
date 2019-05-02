@@ -3,6 +3,9 @@ const express = require('express')
 const router = express.Router()
 const upload = require('../middleware/uploadImage')
 
+router.get('/popular', drinkController.getPopularDrinks)
+
+
 // testing here
 router.get('/:id', drinkController.getDrinkComments)
 router.post('/:id', drinkController.postDrinkComment)
@@ -14,7 +17,6 @@ router.post('/', upload.single('drink'), drinkController.createDrink)
 router.delete('/:id', drinkController.deleteOne)
 
 router.put('/:id', drinkController.updateDrinkPopular)
-router.get('/popular', drinkController.getPopularDrinks)
 
 
 module.exports = router

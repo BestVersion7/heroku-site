@@ -16,8 +16,13 @@ import {
 } from 'react-router-dom'
 
 const theme = createMuiTheme({
-    primary: {
-        main: 'rgb(32,32,144)'
+    palette: {
+        primary: {
+            main: 'rgb(312,32,144)'
+        }
+    },
+    typography: {
+        useNextVariants: true
     }
 })
 
@@ -35,7 +40,7 @@ const Header = () => {
     
     return (
         <MuiThemeProvider theme={theme}>
-            <AppBar position="static">
+            <AppBar position="fixed">
                 <Toolbar>
                     <NavLink to="/" exact>
                         <Avatar 
@@ -45,7 +50,7 @@ const Header = () => {
                         />
                     </NavLink>
 
-                    <Button onClick={handleOpen}>
+                    <Button className="btn-header" onClick={handleOpen}>
                         <Reorder />
                     </Button>
                 </Toolbar>

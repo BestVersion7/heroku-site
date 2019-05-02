@@ -6,14 +6,14 @@ const cloudinary = require('cloudinary').v2
 
 exports.user_all = (req, res, next) => {
     User.find()
-    .select("username picture_url_thumbnail picture_url_original")
+    // .select()
     .then(item => res.send(item))
     .catch(err => res.status(500).send(err.message))
 }
 
-exports.signup_user = (req, res, next) => {
+exports.signup_user = (req, res) => {
+    // check username is taken
     User.find({username: req.body.username})
-    // username is taken
     .then(item => {
         if (item.length>=1) {
             return res.status(409).send('username exists')
@@ -23,10 +23,11 @@ exports.signup_user = (req, res, next) => {
             if(hash) {
                 User.create({
                     username: req.body.username,
-                    password: hash
+                    password: hash,
+                    email: req.body.email
                 })
                 .then(item => res.status(201).send('Success'))
-                .catch(err => res.status(500).send(err.message))
+                .catch(err => res.status(500).send('fail'))
             }
         })
     })

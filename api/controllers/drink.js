@@ -110,3 +110,10 @@ exports.postDrinkComment = (req, res) => {
     .then(item => res.status(201).send(item))
     .catch(err => res.status(500).send(err))
 }
+
+// this needs work
+exports.getDrinkByGroup = (req, res) => {
+    Drinks.find(req.query)
+    .then(item => res.send(item))
+    .catch(err => res.status(500).send(err))
+}

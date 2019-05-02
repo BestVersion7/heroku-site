@@ -4,7 +4,8 @@ const Schema = mongoose.Schema
 const userSchema = new Schema({
     username: {
         type: String,
-        required: true
+        required: true,
+        minlength: 1
     },
     password: {
         type: String,
@@ -28,8 +29,8 @@ const userSchema = new Schema({
     },
     email: {
         type: String,
-        required: true,
-        default: 'test@email.com'
+        // required: true,
+        minlength: 7
     }
 })
 
