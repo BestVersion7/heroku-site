@@ -37,8 +37,8 @@ const Signin = () => {
     if(redirectPage) return <Redirect to = '/film' />
 
     return (
-        <div>
-            Sign-in TO SEE A HIDDEN PAGE!
+        <div className="page-container">
+            <h3>Sign-in TO SEE A HIDDEN PAGE!</h3>
             <p>(Username: fast; Password: fast)</p>
                 <form onSubmit={handleLogin}>
                     <label>Username</label>

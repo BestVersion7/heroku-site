@@ -7,7 +7,7 @@ import {Button, TextField} from '@material-ui/core'
 const Signup = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    const [email, setEmail] = useState('fun@gmail.com')
+    const [email, setEmail] = useState('default1@m1.com')
     const [credFail, setCredFail] = useState(false)
     const [credSuccess, setCredSuccess] = useState(false)
 
@@ -20,7 +20,6 @@ const Signup = () => {
                 setUsername('')
                 setPassword('')
                 setCredSuccess(true)
-                // alert('good')
             } catch(err) {
                 setCredFail(true)
             }
@@ -39,7 +38,7 @@ const Signup = () => {
     }
 
     return (
-        <div>
+        <div className="page-container">
             <h2>Signup Page</h2>
             <form onSubmit = {handleSignup}>
                 <TextField
@@ -52,11 +51,11 @@ const Signup = () => {
                 <br /> <br />
                 <TextField
                     onChange={handleEmailChange}
-                    // required     
+                    required     
                     label="Email"
                     variant="outlined"
                     value={email}
-                    // type="Email"
+                    type="Email"
                 />
                 <br /> <br />
                 <TextField

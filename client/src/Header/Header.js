@@ -5,8 +5,12 @@ import {
     Avatar, 
     MuiThemeProvider,
     createMuiTheme,
-    Button,
-    SwipeableDrawer
+    SwipeableDrawer,
+    List,
+    ListItem,
+    ListItemText,
+    IconButton,
+    Divider
 } from '@material-ui/core'
 import {
     Reorder
@@ -18,7 +22,10 @@ import {
 const theme = createMuiTheme({
     palette: {
         primary: {
-            main: 'rgb(312,32,144)'
+            main: '#8b0000'
+        },
+        secondary: {
+            main: '#F0F8FF'
         }
     },
     typography: {
@@ -36,36 +43,58 @@ const Header = () => {
     const handleOpen = () => {
         setIsOpen(!isOpen)
     }
-
     
     return (
         <MuiThemeProvider theme={theme}>
             <AppBar position="fixed">
                 <Toolbar>
-                    <NavLink to="/" exact>
-                        <Avatar 
-                            onClick={handleRefresh} 
-                            src="https://res.cloudinary.com/crimson-flamingo/image/upload/v1556245482/230419%20Icons/wine.png" 
-                            alt="wine" 
-                        />
-                    </NavLink>
+                    <Avatar 
+                        component={NavLink}
+                        to="/" exact
+                        onClick={handleRefresh} 
+                        src="https://res.cloudinary.com/crimson-flamingo/image/upload/v1556245482/230419%20Icons/wine.png" 
+                        alt="wine" 
+                    />
 
-                    <Button className="btn-header" onClick={handleOpen}>
-                        <Reorder />
-                    </Button>
+                    <span className="btn-header-dropdown">
+                        <IconButton color="secondary" component={Reorder} onClick={handleOpen} />
+                    </span>
                 </Toolbar>
             </AppBar>
 
+{/* swipeable drawer */}
             <SwipeableDrawer
                 open={isOpen}
                 onClose={handleOpen}
                 onOpen={handleOpen}
                 anchor="right"
+                // variant="persistent"
             >
-                <NavLink to="/drinks">Drinks</NavLink>
-                <NavLink to="/contact">Contact</NavLink>
-                <NavLink to="/signin">Sign In</NavLink>
-            </SwipeableDrawer>
+                <div className="header-navlinks-container">
+                {/* shows the icon */}
+                    <Toolbar>
+                        <span className="btn-header-dropdown-active">
+                            <IconButton color="secondary" component={Reorder} onClick={handleOpen} />
+                        </span>
+                    </Toolbar>
+                    <Divider />
+                    
+                    <List>
+                        <ListItem button className="header-navlinks" component={NavLink} to="/" exact>
+                            <ListItemText primary="Home"/>
+                        </ListItem>
+                        <ListItem button className="header-navlinks" component={NavLink} to="/drinks">
+                            <ListItemText primary="Drinks"/>
+                        </ListItem>
+                        {/* <ListItem button className="header-navlinks" component={NavLink} to="/reviews">
+                            <ListItemText primary="Reviews"/>
+                        </ListItem> */}
+                        <ListItem button className="header-navlinks" component={NavLink} to="/signin">
+                            <ListItemText primary="Sign In"/>
+                        </ListItem>
+                    </List>
+                </div>
+            </SwipeableDrawer>  
         </MuiThemeProvider>
     )
 }

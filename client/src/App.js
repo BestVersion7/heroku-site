@@ -43,7 +43,7 @@ const App = () => {
   return (
     <div>
       <Router>
-        <div>
+        <div className="home-section1">
           <UserContext.Provider value={{userData, signedIn}}>
             <Header />
             <div className="blank-padding"></div>

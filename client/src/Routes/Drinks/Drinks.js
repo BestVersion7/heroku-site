@@ -17,8 +17,7 @@ const Drinks = () => {
     useEffect(() => {fetchDrinks()}, [])
 
     return (
-        <div>
-            
+        <div className="page-container">
             {drinks.map(({
                 _id,
                 name,

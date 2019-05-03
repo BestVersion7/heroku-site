@@ -35,7 +35,7 @@ const ReviewPost = ({fetchComment}) => {
     return (
         <div>
             {credentialFail && <CredentialFail />}
-            Signin to Post
+            <p>Sign In to Post Comments</p>
             <form onSubmit={handleSubmit}>
                 <textarea
                     placeholder="Add your Review here"
