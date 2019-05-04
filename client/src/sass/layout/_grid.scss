@@ -57,24 +57,13 @@
 
 
 // homepage drink carousel
-.drink-carousel-container {
-	margin: 1em 2em;
-	text-align: center;
-	color: darkorange;
-	font-weight: bold;
-	.carousel-grid {
-		transform: scale(.9);
-		border: solid black;
-		.carousel-link-container {
-			text-decoration: none;
-			color: darkred;
-			.carousel-img {
-				margin: auto;
-			}
-			.carousel-text {
-				font-size: .8em
-			}
-		}
+
+.carousel-grid {
+	transform: scale(.9);
+	.carousel-text {
+		background: lightsalmon;
+		height: 4em;
 	}
 }
+
 

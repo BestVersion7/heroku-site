@@ -28,21 +28,11 @@ const drinkSchema = new Schema({
     },
     drink_url_thumbnail: String,
     drink_url_original: String,
-    ingredients: {
-        type: String,
-        default: 'red white wine'
-    },
-    directions: {
-        type: String,
-        default: 'Step 1: Purchase'
-    },
+    ingredients: String,
+    directions: String,
     date: {
         type: Date,
         default: Date.now
-    },
-    redirect: {
-        type: String,
-        default: 'http://localhost:4000'
     },
     group: {
         type: String,

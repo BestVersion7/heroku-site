@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {Redirect} from 'react-router-dom'
 import Carousel from './carousel'
-import {List, ListItem, ListItemText, ListItemAvatar} from '@material-ui/core'
+import {List, ListItem, ListItemText, ListItemIcon} from '@material-ui/core'
 import Check from '@material-ui/icons/Check'
 
 export default () => {
@@ -19,7 +19,7 @@ export default () => {
             <List>
                 {['Reactjs', 'SASS', 'HTML', 'Material UI'].map((item, index) => (
                     <ListItem key={index}>
-                        <ListItemAvatar><Check/></ListItemAvatar>
+                        <ListItemIcon><Check/></ListItemIcon>
                         <ListItemText primary={item}/>
                     </ListItem>
                 ))}
@@ -29,7 +29,7 @@ export default () => {
             <List>
                 {['ExpressJs', 'Nodejs', 'MongoDB Atlas', 'Cloudinary'].map((item, index) => (
                     <ListItem key={index}>
-                        <ListItemAvatar><Check/></ListItemAvatar>
+                        <ListItemIcon><Check/></ListItemIcon>
                         <ListItemText primary={item}/>
                     </ListItem>
                 ))}
@@ -38,11 +38,11 @@ export default () => {
             <List>
                 {['Github', 'Heroku', 'Google Analytics'].map((item, index) => (
                     <ListItem key={index}>
-                        <ListItemAvatar><Check/></ListItemAvatar>
+                        <ListItemIcon><Check/></ListItemIcon>
                         <ListItemText primary={item}/>
                     </ListItem>
                 ))}
-            </List>
+            </List> 
 
             {/* <div>
                 <p>Wine and Dine. Dine and Wine. Strike First. Strike Hard. Show some Mercy. </p>

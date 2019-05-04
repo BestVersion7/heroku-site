@@ -1,7 +1,8 @@
 import React, {useContext} from 'react'
 import {NavLink} from 'react-router-dom'
-import HeaderNavUser from './headerNavUser';
+import HeaderNavUser from './headerNavUser'
 import {UserContext} from '../App'
+import {List, ListItem, ListItemText} from '@material-ui/core'
 
 const HeaderNav = () => {
   const {signedIn} = useContext(UserContext)
@@ -9,26 +10,13 @@ const HeaderNav = () => {
   return (
     <nav className="nav-container">
         <div className="nav-link-padding"></div>
-        <NavLink
-          className="nav-link"
-          activeClassName="nav-link-active"
-          to='/' exact
-        >Home</NavLink>
-
-        <NavLink
-          className="nav-link" 
-          activeClassName="nav-link-active"
-          to='/reviews'
-        >Reviews</NavLink>
-
         {signedIn ? (
           <HeaderNavUser /> 
-          ): (
-        <NavLink  
-          className="nav-link" 
-          activeClassName="nav-link-active"
-          to='/signin'
-        >Sign In</NavLink>)}
+        ): (
+        <ListItem button component={NavLink} to="/signin">
+          <ListItemText primary="Sign in" />
+        </ListItem>
+        )}
     </nav>
   )
 }

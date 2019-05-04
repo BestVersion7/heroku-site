@@ -12,12 +12,10 @@ import {
     IconButton,
     Divider
 } from '@material-ui/core'
-import {
-    Reorder
-} from '@material-ui/icons' 
-import {
-    NavLink
-} from 'react-router-dom'
+import Reorder from '@material-ui/icons/Reorder' 
+import {NavLink} from 'react-router-dom'
+import HeaderNav from './headerNav';
+
 
 const theme = createMuiTheme({
     palette: {
@@ -62,7 +60,7 @@ const Header = () => {
                 </Toolbar>
             </AppBar>
 
-{/* swipeable drawer */}
+            {/* swipeable drawer */}
             <SwipeableDrawer
                 open={isOpen}
                 onClose={handleOpen}
@@ -86,12 +84,7 @@ const Header = () => {
                         <ListItem button className="header-navlinks" component={NavLink} to="/drinks">
                             <ListItemText primary="Drinks"/>
                         </ListItem>
-                        {/* <ListItem button className="header-navlinks" component={NavLink} to="/reviews">
-                            <ListItemText primary="Reviews"/>
-                        </ListItem> */}
-                        <ListItem button className="header-navlinks" component={NavLink} to="/signin">
-                            <ListItemText primary="Sign In"/>
-                        </ListItem>
+                        <ListItem component={HeaderNav} />
                     </List>
                 </div>
             </SwipeableDrawer>  

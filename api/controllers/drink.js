@@ -4,23 +4,24 @@ const formatImage = require('../middleware/formatImage')
 
 exports.fetchDrinks = (req, res) => {
     Drinks.find()
+    .select("name ingredients directions group drink_url_thumbnail drink_url_original")
     .then(item => res.send(item))
     .catch(err => res.status(404).send(err))
 }
 
-exports.createDrink = (req, res) => {
+exports.createDrink = async (req, res) => {
     // console.log(formatImage(req))
-    const file = formatImage(req).content
-    cloudinary.uploader.upload(
-        file,
-        {
-            folder: "2304 drinks",
-            public_id: `${req.file.fieldname}-${Date.now()}`
-        }
-    )
-    .then(drink => {
-        const transformed = cloudinary.url(
-            drink.public_id,
+    try {
+        const file = formatImage(req).content
+        const data = await cloudinary.uploader.upload(
+            file,
+            {
+                folder: "030519 drinks",
+                public_id: `${req.file.fieldname}-${Date.now()}`
+            }
+        )
+        const transformed = await cloudinary.url(
+            data.public_id,
             {
                 secure: true,
                 height: 50,
@@ -28,17 +29,21 @@ exports.createDrink = (req, res) => {
                 scale: "crop"
             }
         )
-        Drinks.create({
+        const item = await Drinks.create({
             name: req.body.name,
-            drink_url_thumbnail: transformed,
-            drink_url_original: drink.secure_url
+            drink_url_thumbnail: `${transformed}.${data.format}`,
+            drink_url_original: data.secure_url,
+            ingredients: req.body.ingredients,
+            directions: req.body.directions,
+            group: req.body.group,
+            popular: req.body.popular,
         })
-        .then(item => res.status(201).send(item))
-        .catch(err => res.status(403).send(err))
-    })
-    .catch(err => res.status(500).send(err))
+        res.status(201).send(item)
+    } catch(err) {
+        res.status(500).send(err)
+    }
 }
-    
+  
 exports.deleteAll = (req, res) => {
     Drinks.deleteMany()
     .then(() => res.send('deleted all'))

@@ -7,8 +7,8 @@ router.get('/popular', drinkController.getPopularDrinks)
 
 
 // testing here
-router.get('/:id', drinkController.getDrinkComments)
-router.post('/:id', drinkController.postDrinkComment)
+router.get('/comment/:id', drinkController.getDrinkComments)
+router.post('/comment/:id', drinkController.postDrinkComment)
 // ends here
 
 router.get('/', drinkController.fetchDrinks)

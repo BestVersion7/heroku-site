@@ -2,6 +2,7 @@ import Slider from 'react-slick'
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import {settings} from '../../utilities/carouselSettings'
+import {Card, CardMedia, CardContent} from '@material-ui/core'
 
 const Carousel = () => {
     const [drinks, setDrinks] = useState([])
@@ -20,23 +21,23 @@ const Carousel = () => {
     }, [])
 
     return (
-        <div className="drink-carousel-container">
+        <div>
             <Slider {...settings}>
-                {drinks.map(({_id, drink_url_thumbnail, drink_url_original, name}) => (
+                {drinks.map(({_id, drink_url_original, name}) => (
                     <div key={_id} className="carousel-grid">
-                        <a 
-                            href={drink_url_original} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="carousel-link-container"
-                        >
-                            <div className="carousel-text">{name}</div>
-                            <img 
-                                src={drink_url_thumbnail} 
-                                alt={name} 
-                                className="carousel-img"
+                        <Card>
+                            <CardMedia 
+                                image={drink_url_original}
+                                title={name}
+                                style={{
+                                    "height": "0",
+                                    "paddingTop": '56.25%', // 16:9
+                                }}
                             />
-                        </a>
+                            <div className="carousel-text">
+                                <CardContent>{name}</CardContent>
+                            </div>
+                        </Card>
                     </div>
                 ))}
             </Slider>

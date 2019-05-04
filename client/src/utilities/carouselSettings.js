@@ -1,10 +1,10 @@
 import React from 'react'
-// import arrow_back from '@material-ui/icons/arrow_back'
+import ArrowBack from '@material-ui/icons/ArrowBackIos'
 
 const NextArrow = (props) => {
     const { className, onClick } = props;
     return (
-      <img
+      <ArrowBack
         className={className}
         onClick={onClick}
         src="https://res.cloudinary.com/crimson-flamingo/image/upload/v1556246179/230419%20Icons/rightarrow.png"
