@@ -17,7 +17,6 @@
 	}
 }
 
-
 .page-container {
 	margin: 0 2.5%;
 }
@@ -34,20 +33,18 @@
 	};
 	@include media-query(75em) {
 		grid-template: 1fr/ repeat(4, auto);
+	};
+	.gallery-image-container {
+		position: relative;
+		button {
+			position: absolute;
+			top: 0;
+			right:0
+		};
+		img {
+			max-width: 100%
+		}
 	}
-}
-
-.gallery-image-container {
-	position: relative;
-	button {
-		position: absolute;
-		top: 0;
-		right:0
-	}
-}
-
-.gallery-container-grid {
-	position: relative
 }
 
 .user-comment-container {
@@ -57,7 +54,6 @@
 
 
 // homepage drink carousel
-
 .carousel-grid {
 	transform: scale(.9);
 	.carousel-text {

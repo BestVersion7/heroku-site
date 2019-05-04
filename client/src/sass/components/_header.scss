@@ -8,29 +8,6 @@
 	@include media-query(100em) {
 		width: 100em
 	}
-	.header-icon {
-		height: 2em;
-		padding: .5em;
-		cursor: pointer;
-	}
-	.nav-icon {
-		height: 2em;
-		padding: .5em;
-		position: absolute;
-		top: 0;
-		right: 0;
-		z-index: 3;
-		@include media-query(30em) {
-			display: none
-		}
-	}
-	// ensure navbar shows when toggled to false switch portrait to landscape
-	.nav-desktop {
-		display: none;
-		@include media-query(30em) {
-			display: block;
-		}
-	}
 
 	//start of nav links
 	.nav-container {

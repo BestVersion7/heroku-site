@@ -2,7 +2,7 @@ import React, {useContext} from 'react'
 import {NavLink} from 'react-router-dom'
 import HeaderNavUser from './headerNavUser'
 import {UserContext} from '../App'
-import {List, ListItem, ListItemText} from '@material-ui/core'
+import {ListItem, ListItemText} from '@material-ui/core'
 
 const HeaderNav = () => {
   const {signedIn} = useContext(UserContext)

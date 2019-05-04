@@ -17,12 +17,10 @@ export default ({handleShowData}) => {
     return (
         <div className="gallery-image-container"> 
             <img 
-                className="gallery-image" 
                 src={picture} 
                 alt="nature" 
             />
             <button
-                className="remove-button"               
                 onClick={handleDeleteImage}
                 value = {_id}
             > X</button>
