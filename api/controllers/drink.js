@@ -2,8 +2,8 @@ const Drinks = require('../models/drink')
 const cloudinary = require('cloudinary').v2
 const formatImage = require('../middleware/formatImage')
 
-exports.fetchDrinks = (req, res) => {
-    Drinks.find()
+exports.getDrinks = (req, res) => {
+    Drinks.find(req.query)
     .select("name ingredients directions group drink_url_thumbnail drink_url_original")
     .then(item => res.send(item))
     .catch(err => res.status(404).send(err))
@@ -26,7 +26,7 @@ exports.createDrink = async (req, res) => {
                 secure: true,
                 height: 50,
                 width: 50,
-                scale: "crop"
+                crop: "scale"
             }
         )
         const item = await Drinks.create({
@@ -52,7 +52,7 @@ exports.deleteAll = (req, res) => {
 
 exports.deleteOne = (req, res) => {
     Drinks.deleteOne({_id: req.params.id})
-    .then(() => res.send(`deleted ${_id}`))
+    .then(() => res.status(204).send(`deleted ${_id}`))
     .catch(err => res.status(500).send(err))
 }
 
@@ -94,8 +94,7 @@ exports.getDrinkById = (req, res) => {
     .catch(err => res.status(500).send(err))   
 }
 
-
-// testing nested model
+//  nested mongoose model
 exports.getDrinkComments = (req, res) => {
     Drinks.findOne({_id: req.params.id})
     .select("comment")
@@ -116,9 +115,3 @@ exports.postDrinkComment = (req, res) => {
     .catch(err => res.status(500).send(err))
 }
 
-// this needs work
-exports.getDrinkByGroup = (req, res) => {
-    Drinks.find(req.query)
-    .then(item => res.send(item))
-    .catch(err => res.status(500).send(err))
-}

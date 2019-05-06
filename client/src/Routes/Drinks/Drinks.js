@@ -1,12 +1,17 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
+import {Route, Switch} from 'react-router-dom'
+import DrinkAll from './drinkAll'
+import DrinkParams from './drinkParams'
+
+export const DrinkContext = React.createContext()
 
 const Drinks = () => {
     const [drinks, setDrinks] = useState([])
 
     const fetchDrinks = async () => {
         try {
-            const {data} = await axios.get('/api/drinks')
+            const {data} = await axios.get(`/api/drinks`)
             setDrinks(data)
         } catch {
 
@@ -16,22 +21,12 @@ const Drinks = () => {
     useEffect(() => {fetchDrinks()}, [])
 
     return (
-        <div className="page-container">
-            {drinks.map(({
-                _id,
-                name,
-                drink_url_thumbnail,
-                ingredients,
-                directions
-            }) => (
-                <div key={_id}>
-                    <p>{name}</p>
-                    <img src={drink_url_thumbnail} alt={name} />
-                    <p>{ingredients}</p>
-                    <p>{directions}</p>
-                </div>
-            ))}
-        </div>
+        <DrinkContext.Provider value={drinks}>
+            <Switch>
+                <Route path="/drinks" exact component={DrinkAll} />
+                <Route path="/drinks/:id" component={DrinkParams} />
+            </Switch>
+        </DrinkContext.Provider>
     )
 }
 

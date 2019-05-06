@@ -13,6 +13,7 @@ import {
     Divider
 } from '@material-ui/core'
 import Reorder from '@material-ui/icons/Reorder' 
+import Close from '@material-ui/icons/Close'
 import {NavLink} from 'react-router-dom'
 import HeaderNav from './headerNav';
 
@@ -71,17 +72,15 @@ const Header = () => {
                 <div className="header-navlinks-container">
                 {/* shows the icon */}
                     <Toolbar>
-                        <span className="btn-header-dropdown-active">
-                            <IconButton color="secondary" component={Reorder} onClick={handleOpen} />
-                        </span>
+                        <IconButton color="secondary" component={Close} onClick={handleOpen} />
                     </Toolbar>
                     <Divider />
                     
-                    <List>
-                        <ListItem button className="header-navlinks" component={NavLink} to="/" exact>
+                    <List onClick={handleOpen}>
+                        <ListItem button component={NavLink} to="/" exact>
                             <ListItemText primary="Home"/>
                         </ListItem>
-                        <ListItem button className="header-navlinks" component={NavLink} to="/drinks">
+                        <ListItem button component={NavLink} to="/drinks">
                             <ListItemText primary="Drinks"/>
                         </ListItem>
                         <ListItem component={HeaderNav} />

@@ -42,9 +42,9 @@ const App = () => {
   useEffect(() => {validateToken()}, [])
   return (
     <div>
+    <UserContext.Provider value={{userData, signedIn}}>
       <Router>
         <div className="home-section1">
-          <UserContext.Provider value={{userData, signedIn}}>
             <Header />
             <div className="blank-padding"></div>
             <Switch>
@@ -64,9 +64,9 @@ const App = () => {
               <Route component={NoMatch} />
             </Switch>
             <Footer />
-          </UserContext.Provider>
         </div>
       </Router>
+      </UserContext.Provider>
     </div>
   )
 }

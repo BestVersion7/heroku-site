@@ -2,7 +2,8 @@ import Slider from 'react-slick'
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import {settings} from '../../utilities/carouselSettings'
-import {Card, CardMedia, CardContent} from '@material-ui/core'
+import {Card, CardMedia, CardContent, CardActionArea} from '@material-ui/core'
+import {Link} from 'react-router-dom'
 
 const Carousel = () => {
     const [drinks, setDrinks] = useState([])
@@ -26,17 +27,21 @@ const Carousel = () => {
                 {drinks.map(({_id, drink_url_original, name}) => (
                     <div key={_id} className="carousel-grid">
                         <Card>
-                            <CardMedia 
-                                image={drink_url_original}
-                                title={name}
-                                style={{
-                                    "height": "0",
-                                    "paddingTop": '56.25%', // 16:9
-                                }}
-                            />
-                            <div className="carousel-text">
-                                <CardContent>{name}</CardContent>
-                            </div>
+                            <CardActionArea>
+                                <Link className="card-link" to={`/drinks/${_id}`}>
+                                    <CardMedia 
+                                        image={drink_url_original}
+                                        title={name}
+                                        style={{
+                                            "height": "0",
+                                            "paddingTop": '56.25%', // 16:9
+                                        }}
+                                    />
+                                    <div className="carousel-text">
+                                        <CardContent>{name}</CardContent>
+                                    </div>
+                                </Link>
+                            </CardActionArea>
                         </Card>
                     </div>
                 ))}

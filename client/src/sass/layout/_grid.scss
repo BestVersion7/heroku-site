@@ -59,7 +59,31 @@
 	.carousel-text {
 		background: lightsalmon;
 		height: 4em;
+		color: darkblue;
 	}
 }
 
+// responsive navigation
+.header-navlinks-container {
+    background: #8b0000;
+	height: 100%;
+	width: 10em;
+}
 
+.btn-header-dropdown {
+    margin-left: auto;
+    margin-right: -1em;
+}
+
+// carousel home
+.card-link {
+	text-decoration: none;
+	text-align: center
+}
+
+.img-drink {
+	max-width: 100%;
+	@include media-query(30em) {
+		max-width: 15em
+	}
+}
