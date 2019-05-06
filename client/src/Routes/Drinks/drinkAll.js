@@ -1,14 +1,17 @@
 import React, {useContext} from 'react'
 import {DrinkContext} from './Drinks'
-import {Link} from 'react-router-dom'
 import {IconButton} from '@material-ui/core'
 import OpenInNew from '@material-ui/icons/OpenInNew'
 
 const DrinkAll = () => {
     const drinks = useContext(DrinkContext)
+
+    const handleClick = () => {
+        window.scrollTo(0,0)
+    }
     return (
         <div className="page-container">
-        <h2><i>Working on styling ... </i></h2>
+        <h2><i>Working on styling and query search ... </i></h2>
             {drinks.map(({
                 _id,
                 name,
@@ -17,7 +20,7 @@ const DrinkAll = () => {
                 <div key={_id}>
                     <p>
                         {name} 
-                        <IconButton component={Link} to={`/drinks/${_id}`}>
+                        <IconButton onClick={handleClick} href={`/drinks/${_id}`}>
                             <OpenInNew />       
                         </IconButton>
                     </p>
