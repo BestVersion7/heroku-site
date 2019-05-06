@@ -8,7 +8,7 @@ const DrinkAll = () => {
     const drinks = useContext(DrinkContext)
     return (
         <div className="page-container">
-        <p><i>Working on styling ... </i></p>
+        <h2><i>Working on styling ... </i></h2>
             {drinks.map(({
                 _id,
                 name,

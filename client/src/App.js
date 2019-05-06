@@ -46,7 +46,7 @@ const App = () => {
       <Router>
         <div className="home-section1">
             <Header />
-            <div className="blank-padding"></div>
+            {/* <div className="blank-padding"></div> */}
             <Switch>
               <Route path='/' exact component={Home} />
               <Route path='/signup' component={Signup} />

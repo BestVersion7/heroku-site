@@ -45,21 +45,23 @@ const Header = () => {
     
     return (
         <MuiThemeProvider theme={theme}>
-            <AppBar position="fixed">
-                <Toolbar>
-                    <Avatar 
-                        component={NavLink}
-                        to="/" exact
-                        onClick={handleRefresh} 
-                        src="https://res.cloudinary.com/crimson-flamingo/image/upload/v1556245482/230419%20Icons/wine.png" 
-                        alt="wine" 
-                    />
+            <div className="header-container">
+                <AppBar position="static">
+                    <Toolbar>
+                        <Avatar 
+                            component={NavLink}
+                            to="/" exact
+                            onClick={handleRefresh} 
+                            src="https://res.cloudinary.com/crimson-flamingo/image/upload/v1556245482/230419%20Icons/wine.png" 
+                            alt="wine" 
+                        />
 
-                    <span className="btn-header-dropdown">
-                        <IconButton color="secondary" component={Reorder} onClick={handleOpen} />
-                    </span>
-                </Toolbar>
-            </AppBar>
+                        <span className="btn-header-dropdown">
+                            <IconButton color="secondary" component={Reorder} onClick={handleOpen} />
+                        </span>
+                    </Toolbar>
+                </AppBar>
+            </div> 
 
             {/* swipeable drawer */}
             <SwipeableDrawer
@@ -86,7 +88,7 @@ const Header = () => {
                         <ListItem component={HeaderNav} />
                     </List>
                 </div>
-            </SwipeableDrawer>  
+            </SwipeableDrawer> 
         </MuiThemeProvider>
     )
 }

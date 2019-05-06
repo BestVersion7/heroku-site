@@ -59,10 +59,9 @@ export default () => {
             <ul>
                 <li>GraphQL</li>
             </ul>
-            <h3>Work Samples</h3>
+            <h3>Other Work Samples</h3>
             <List>
-                {['https://goldenwine.herokuapp.com/', 
-                'https://bestversion7.github.io/portfolio/#/', 
+                {['https://bestversion7.github.io/portfolio/#/', 
                 'https://snack.expo.io/@hunter99/3-12-18'].map((item, index) => (
                     <ListItem key={index}>
                         <ListItemIcon><ArrowForward/></ListItemIcon>
