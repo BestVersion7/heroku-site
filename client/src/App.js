@@ -6,12 +6,11 @@ import Signin from './Routes/Signin/Signin';
 import Signup from './Routes/Signup/Signup';
 
 import {PrivateRoute} from './Routes/PrivateRoute'
+import {PrivateRoute2} from './Routes/PrivateRoute2'
 import {Switch, Route, BrowserRouter as Router } from 'react-router-dom'
-import Films from './Routes/Film/Films';
 import Secret from './Routes/Secret/Secret'
 import About from './Routes/About/about'
 import Beauty from './Routes/Secret/Beauty'
-import {PrivateRoute2} from './Routes/PrivateRoute2'
 import NoMatch from './Routes/noMatch'
 import Account from './Routes/Account/Account'
 import Footer from './Footer/Footer'
@@ -52,7 +51,6 @@ const App = () => {
               <Route path='/signup' component={Signup} />
               <Route path='/signin' component={Signin} />
               <Route path='/reviews' component={Review} />
-              <PrivateRoute path='/film' component={Films} />
               <Route path='/about' component={About} />
               <PrivateRoute path='/account' component={Account} />
               <Route path="/legal" component={Privacy} />

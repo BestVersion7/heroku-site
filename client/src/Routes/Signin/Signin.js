@@ -34,7 +34,7 @@ const Signin = () => {
         setCredFail(false)
     }
 
-    if(redirectPage) return <Redirect to = '/film' />
+    if(redirectPage) return <Redirect to = {`/account`} />
 
     return (
         <div className="page-container">
