@@ -51,7 +51,7 @@ exports.login_user = (req, res, next) => {
                     process.env.PRIVATE_KEY,
                     {
                         audience: user.username, 
-                        expiresIn: '10m'
+                        expiresIn: '30m'
                     }
                 )
                 return res.json({

@@ -1,29 +1,30 @@
-import React, {useContext} from 'react'
+import React, { useContext } from 'react'
 import axios from 'axios'
-import {FilmContext} from './Films'
-import {auth} from '../../utilities/auth'
+import { auth } from '../../utilities/auth'
+import { IconButton } from '@material-ui/core'
+import Close from '@material-ui/icons/Close'
+import { FilmContext } from './Films'
 
-export default ({handleShowData}) => {
-    const {_id, picture} = useContext(FilmContext)
-
-    const handleDeleteImage = async e => {
+export default ({ value }) => {
+    const { picture, _id } = value
+    const { subscription, setSubscription } = useContext(FilmContext)
+    const handleDeleteImage = async () => {
         try {
-          await axios.delete(`api/movie/${e.target.value}`, auth.getToken())
-          handleShowData()
-        } catch(err) {
-          alert(err)
-        }      
+            await axios.delete(`api/movie/${_id}`, auth.getToken())
+            setSubscription(!subscription)
+        } catch (err) {
+            alert(err)
+        }
     }
     return (
-        <div className="gallery-image-container"> 
-            <img 
-                src={picture} 
-                alt="nature" 
+        <div className="gallery-image-container">
+            <img
+                src={picture}
+                alt="nature"
             />
-            <button
+            <IconButton
                 onClick={handleDeleteImage}
-                value = {_id}
-            > X</button>
+            ><Close /></IconButton>
         </div>
-    ) 
+    )
 }

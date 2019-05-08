@@ -1,20 +1,25 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import axios from 'axios'
 import {auth} from '../../utilities/auth'
+import {FilmContext} from './Films'
 
-export default ({handleShowData}) => {
+export default () => {
+    const {subscription, setSubscription} = useContext(FilmContext)
     const [file, setFile] = useState(null)
 
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault()
         const formData = new FormData()
         formData.append('title', auth.getPayloadUsername())
         formData.append('movie', file)
         
         axios.defaults.headers.post['Content-Type'] = 'multipart/form-data'
-        axios.post('/api/movie', formData, auth.getToken())
-        .then(() => handleShowData())
-        .catch(err => alert(err))
+        try {
+            await axios.post('/api/movie', formData, auth.getToken())
+            setSubscription(!subscription)
+        } catch {
+
+        }
     }
 
     const handleChangeUpload = e => {

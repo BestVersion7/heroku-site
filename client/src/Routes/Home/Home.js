@@ -60,7 +60,7 @@ export default () => {
                 <li>GraphQL</li>
             </ul>
             <h3>Other Work Samples</h3>
-            <List>
+            <List style={{'overflowWrap':'break-word'}}>
                 {['https://bestversion7.github.io/portfolio/#/', 
                 'https://snack.expo.io/@hunter99/3-12-18'].map((item, index) => (
                     <ListItem key={index}>

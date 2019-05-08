@@ -5,7 +5,8 @@ const Schema = mongoose.Schema
 const userCommentSchema = new Schema({
     username: {
         type: String,
-        required: true
+        required: true,
+        maxlength: 20
     },
     picture_url_thumbnail: {
         type: String,
@@ -17,7 +18,8 @@ const userCommentSchema = new Schema({
     },
     comment: {
         type: String,
-        required: true
+        required: true,
+        maxlength: 300
     }
 })
 
@@ -42,7 +44,7 @@ const drinkSchema = new Schema({
         type: String,
         default: false
     },
-    comment: [userCommentSchema]
+    comments: [userCommentSchema]
 })
 
 module.exports = mongoose.model('drink', drinkSchema)

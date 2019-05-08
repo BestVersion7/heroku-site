@@ -4,7 +4,6 @@ const formatImage = require('../middleware/formatImage')
 
 exports.getDrinks = (req, res) => {
     Drinks.find(req.query)
-    .select("name ingredients directions group drink_url_thumbnail drink_url_original")
     .then(item => res.send(item))
     .catch(err => res.status(404).send(err))
 }
@@ -97,21 +96,46 @@ exports.getDrinkById = (req, res) => {
 //  nested mongoose model
 exports.getDrinkComments = (req, res) => {
     Drinks.findOne({_id: req.params.id})
-    .select("comment")
+    .select("comments")
     .then(item => res.send(item))
     .catch(err => res.status(500).send(err))
 }
 
 exports.postDrinkComment = (req, res) => {
-    Drinks.updateOne(
-        {_id: req.params.id},
+    Drinks.findByIdAndUpdate(
+        req.params.id,
         {$push: {
-            comment: req.body
+            comments: req.body
         }},
         // validate the fields in subdocuments
-        {runValidators: true}
+        {runValidators: true, useFindAndModify: false}
     )
     .then(item => res.status(201).send(item))
     .catch(err => res.status(500).send(err))
 }
 
+exports.deleteDrinkComment = (req, res) => {
+    Drinks.findByIdAndUpdate(
+        req.params.id,
+        {$pull: {
+            comments: {
+                _id: req.params.commentId
+            }
+        }},
+        {useFindAndModify: false}
+    )
+    .then(item => res.status(204).send(item))
+    .catch(err => res.status(500).send(err))
+}
+
+exports.deleteAllComments = (req, res) => {
+    Drinks.findByIdAndUpdate(
+        req.params.id,
+        {$pull: {
+            comments: {}
+        }},
+        {useFindAndModify: false}
+    )
+    .then(item => res.status(204).send(item))
+    .catch(err => res.status(500).send(err))
+}

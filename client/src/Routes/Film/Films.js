@@ -1,50 +1,49 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import {auth} from '../../utilities/auth'
+import { auth } from '../../utilities/auth'
 import FilmsUpload from './filmsUpload'
-import {TransitionGroup, CSSTransition} from 'react-transition-group'
+import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import FilmsLayout from './filmsLayout'
 
 export const FilmContext = React.createContext()
 
-const Film =  () => {
-    const [hiddenData, setHiddenData] = useState([])
+const Film = () => {
+  const [hiddenData, setHiddenData] = useState([])
 
-    const handleShowData = async () => {
-      try {
-        const {data} = await axios.get('/api/movie', auth.getToken())
-        setHiddenData(data)  
-      } catch {
+  // componentwillupdate
+  const [subscription, setSubscription] = useState(false)
 
-      }
+  const handleShowData = async () => {
+    try {
+      const { data } = await axios.get('/api/movie', auth.getToken())
+      setHiddenData(data)
+    } catch {
+
     }
+  }
 
-    useEffect(() => {handleShowData()}, [])
+  useEffect(() => { handleShowData() }, [subscription])
 
-    return (
-        <div className="page-container">  
-          {/* User: {auth.getPayloadUsername()} */}
-          <h2> Hidden Content </h2>
-          <p> Images stored on Cloudinary </p>
-          <FilmsUpload handleShowData={handleShowData}/>
-          <br />
-          <TransitionGroup className="gallery-container">
-              {hiddenData.map(({_id, picture}) => (
+  return (
+    <div className="page-container">
+      <FilmContext.Provider value={{ subscription, setSubscription, hiddenData }}>
+        <p> Images stored on Cloudinary </p>
+        <FilmsUpload />
+        <TransitionGroup className="gallery-container">
+              {hiddenData.map((item, index) => ( 
                 <CSSTransition 
-                  key={_id}
+                  key={index}
                   classNames="fade"
                   timeout={300}
                 >
-                  <FilmContext.Provider  
-                    value={{_id, picture}}
-                  >
-                    <FilmsLayout handleShowData={handleShowData}/>        
-                  </FilmContext.Provider>  
+              
+                  <FilmsLayout value={item}/>        
                 </CSSTransition>          
               ))}
           </TransitionGroup>         
-        </div>
-    )
+      </FilmContext.Provider>
+    </div>
+  )
 }
 
 export default Film

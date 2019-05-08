@@ -7,9 +7,12 @@ const verifyToken = require('../middleware/verifyToken')
 router.get('/popular', drinkController.getPopularDrinks)
 // router.get('/query', drinkController.getDrinkByGroup)
 
-// testing here
-router.get('/comment/:id', drinkController.getDrinkComments)
-router.post('/comment/:id', verifyToken, drinkController.postDrinkComment)
+// nested document for crud comments
+router.get('/comments/:id', drinkController.getDrinkComments)
+router.post('/comments/:id', verifyToken, drinkController.postDrinkComment)
+// router.delete('/comments/:id', drinkController.deleteAllComments)
+// in progress
+router.delete('/comments/:id/:commentId', verifyToken, drinkController.deleteDrinkComment)
 // ends here
 
 router.get('/', drinkController.getDrinks)

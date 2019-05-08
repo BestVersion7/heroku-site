@@ -2,14 +2,17 @@ import React, { useContext } from 'react'
 import {DrinkContext} from './Drinks'
 import {Link} from 'react-router-dom'
 import {Button} from '@material-ui/core'
+import DrinkComments from './drinkComments'
+
+export const DrinkIDContext = React.createContext()
  
 const DrinkParams = ({match}) => {
     const drinks = useContext(DrinkContext)
-    const val = drinks.filter(item => item._id === match.params.id)
+    const filteredParam = drinks.filter(item => item._id === match.params.id)
     return (
         <div className="page-container">
         <br /><br />
-            {val.map((
+            {filteredParam.map((
                 {
                     _id, 
                     drink_url_original, 
@@ -19,7 +22,7 @@ const DrinkParams = ({match}) => {
                     ingredients
                 }
             ) => (
-                <div key={_id}>
+                <DrinkIDContext.Provider key={_id} value={filteredParam}>
                     <img className="img-drink" src={drink_url_original} alt={name} />
                     <h3>Name:</h3>
                     <p>{name}</p>
@@ -30,8 +33,8 @@ const DrinkParams = ({match}) => {
                     <h3>Directions:</h3>
                     <p>{directions}</p>
                     <h3>Comments:</h3>
-                    <textarea placeholder="working in progress"/>
-                </div>
+                    <DrinkComments />
+                </DrinkIDContext.Provider>
             ))}
             <Button color="primary" variant="contained" component={Link} to="/drinks">Back to Drinks</Button>
         </div> 

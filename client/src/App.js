@@ -39,10 +39,10 @@ const App = () => {
     }
   }
 
-  useEffect(() => {validateToken()}, [])
+  useEffect(() => {validateToken()}, [signedIn])
   return (
     <div>
-    <UserContext.Provider value={{userData, signedIn}}>
+    <UserContext.Provider value={{userData, signedIn, setSignedIn}}>
       <Router>
         <div className="home-section1">
             <Header />
