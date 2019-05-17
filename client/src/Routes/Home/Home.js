@@ -1,7 +1,7 @@
-import React, {useState} from 'react'
-import {Redirect} from 'react-router-dom'
+import React, { useState } from 'react'
+import { Redirect } from 'react-router-dom'
 import Carousel from './carousel'
-import {List, ListItem, ListItemText, ListItemIcon, Link} from '@material-ui/core'
+import { List, ListItem, ListItemText, ListItemIcon, Link } from '@material-ui/core'
 import Check from '@material-ui/icons/Check'
 import ArrowForward from '@material-ui/icons/ArrowForward'
 
@@ -10,7 +10,7 @@ export default () => {
     const handleClick = () => {
         setRedirect(true)
     }
-    if(redirect) return <Redirect to="signin"/>
+    if (redirect) return <Redirect to="signin" />
     return (
         <div className="page-container">
             <h3>Welcome to GoldenWine</h3>
@@ -18,26 +18,26 @@ export default () => {
             <p>
                 Link to repo: <span> </span>
                 <a href="https://github.com/BestVersion7/heroku-site">
-                    https://github.com/BestVersion7/heroku-site 
+                    https://github.com/BestVersion7/heroku-site
                 </a>
             </p>
-            <Carousel />    
+            <Carousel />
             <h3>Technologies Used: Front-End</h3>
             <List>
                 {['Reactjs', 'SASS', 'HTML', 'Material UI'].map((item, index) => (
                     <ListItem key={index}>
-                        <ListItemIcon><Check/></ListItemIcon>
-                        <ListItemText primary={item}/>
+                        <ListItemIcon><Check /></ListItemIcon>
+                        <ListItemText primary={item} />
                     </ListItem>
                 ))}
             </List>
-            
+
             <h3>Technologies Used: Back-end (RESTful)</h3>
             <List>
                 {['ExpressJs', 'Nodejs', 'MongoDB Atlas', 'Cloudinary'].map((item, index) => (
                     <ListItem key={index}>
-                        <ListItemIcon><Check/></ListItemIcon>
-                        <ListItemText primary={item}/>
+                        <ListItemIcon><Check /></ListItemIcon>
+                        <ListItemText primary={item} />
                     </ListItem>
                 ))}
             </List>
@@ -45,11 +45,11 @@ export default () => {
             <List>
                 {['Github', 'Heroku', 'Google Analytics'].map((item, index) => (
                     <ListItem key={index}>
-                        <ListItemIcon><Check/></ListItemIcon>
-                        <ListItemText primary={item}/>
+                        <ListItemIcon><Check /></ListItemIcon>
+                        <ListItemText primary={item} />
                     </ListItem>
                 ))}
-            </List> 
+            </List>
 
             {/* <div>
                 <p>Wine and Dine. Dine and Wine. Strike First. Strike Hard. Show some Mercy. </p>
@@ -57,27 +57,28 @@ export default () => {
 
             <h3>Technologies currently learning: </h3>
             <ul>
-                <li>GraphQL</li>
+                <li>Web Sockets</li>
             </ul>
             <h3>Other Work Samples</h3>
-            <List style={{'overflowWrap':'break-word'}}>
-                {['https://bestversion7.github.io/portfolio/#/', 
-                'https://snack.expo.io/@hunter99/3-12-18'].map((item, index) => (
-                    <ListItem key={index}>
-                        <ListItemIcon><ArrowForward/></ListItemIcon>
-                        <ListItemText>
-                            <Link 
-                                href={item}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                title={item}
-                            >{item}</Link>
-                        </ListItemText>
-                    </ListItem>
-                ))}
-            </List> 
+            <List style={{ 'overflowWrap': 'break-word' }}>
+                {['https://bestversion7.github.io/portfolio/#/',
+                    'https://snack.expo.io/@hunter99/3-12-18',
+                    'https://real-time-instant.herokuapp.com/'].map((item, index) => (
+                        <ListItem key={index}>
+                            <ListItemIcon><ArrowForward /></ListItemIcon>
+                            <ListItemText>
+                                <Link
+                                    href={item}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    title={item}
+                                >{item}</Link>
+                            </ListItemText>
+                        </ListItem>
+                    ))}
+            </List>
             Login to post comments and access a private route <br />
-            <button 
+            <button
                 className="btn-regular"
                 onClick={handleClick}
             >Login</button>
