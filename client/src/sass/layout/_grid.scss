@@ -132,11 +132,15 @@
 
 .card-container {
 	display: grid;
-	grid-template: 1fr/ repeat(3, 1fr);
 	grid-column-gap: 1em;
+	grid-row-gap: 1em;
+	@include media-query(30em) {
+		grid-template: 1fr/ repeat(3, 1fr);
+	}
 	.media-card {
-		height: 0;
-		object-fit: cover;
+		height: 10em;
+		width: auto;
+		// object-fit: cover;
 		padding-top: 56.25%;
 	}
 }

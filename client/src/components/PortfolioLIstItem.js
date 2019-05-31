@@ -1,6 +1,6 @@
 import React from 'react'
 import { string } from 'prop-types'
-import { Link, Avatar, Card, CardHeader, CardContent, CardMedia, CardActionArea } from '@material-ui/core'
+import { Card, CardContent, CardMedia, CardActionArea } from '@material-ui/core'
 
 const PortfolioListItem = ({ title, link_url, image_url }) => {
     return (
@@ -20,9 +20,14 @@ const PortfolioListItem = ({ title, link_url, image_url }) => {
                     {title}
                 </CardContent>
             </CardActionArea>
-
         </Card>
     )
+}
+
+PortfolioListItem.propTypes = {
+    title: string,
+    link_url: string,
+    image_url: string
 }
 
 export default PortfolioListItem
