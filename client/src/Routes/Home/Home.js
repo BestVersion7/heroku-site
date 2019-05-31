@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
-import Carousel from './carousel'
-import { List, ListItem, ListItemText, ListItemIcon, Link } from '@material-ui/core'
-import Check from '@material-ui/icons/Check'
-import ArrowForward from '@material-ui/icons/ArrowForward'
+import DrinkCarousel from '../../components/DrinkCarousel'
+import SkillListItem from '../../components/SkillListItem'
+import PortfolioListItem from '../../components/PortfolioLIstItem'
 
 export default () => {
     const [redirect, setRedirect] = useState(false)
@@ -21,62 +20,39 @@ export default () => {
                     https://github.com/BestVersion7/heroku-site
                 </a>
             </p>
-            <Carousel />
-            <h3>Technologies Used: Front-End</h3>
-            <List>
-                {['Reactjs', 'SASS', 'HTML', 'Material UI'].map((item, index) => (
-                    <ListItem key={index}>
-                        <ListItemIcon><Check /></ListItemIcon>
-                        <ListItemText primary={item} />
-                    </ListItem>
-                ))}
-            </List>
+            <DrinkCarousel />
+            <SkillListItem
+                area="Front-end"
+                skills={['Reactjs', 'HTML', 'CSS', 'SASS', 'Google Material Design', 'Web sockets', 'Jest', 'Enzyme']}
+            />
+            <SkillListItem
+                area="Back-end"
+                skills={['Nodejs', 'Expressjs', 'MongoDB', 'SQL', 'Web sockets', 'RESTful API', 'Cloudinary']}
+            />
+            <SkillListItem
+                area="Analytics"
+                skills={['Excel', 'SPSS', 'Google Analytics', 'SAS']}
+            />
+            <h3>Work Samples</h3>
+            <section className="card-container">
+            <PortfolioListItem
+                title="Website - Food/Recipe Blog"
+                link_url="https://bestversion7.github.io/portfolio/#/"
+                image_url="https://res.cloudinary.com/crimson-flamingo/image/upload/v1559314999/3105%20portfolio%20screenshots/3105_static_site_screenshot.png"
+            />
 
-            <h3>Technologies Used: Back-end (RESTful)</h3>
-            <List>
-                {['ExpressJs', 'Nodejs', 'MongoDB Atlas', 'Cloudinary'].map((item, index) => (
-                    <ListItem key={index}>
-                        <ListItemIcon><Check /></ListItemIcon>
-                        <ListItemText primary={item} />
-                    </ListItem>
-                ))}
-            </List>
-            <h3>Others: </h3>
-            <List>
-                {['Github', 'Heroku', 'Google Analytics'].map((item, index) => (
-                    <ListItem key={index}>
-                        <ListItemIcon><Check /></ListItemIcon>
-                        <ListItemText primary={item} />
-                    </ListItem>
-                ))}
-            </List>
+            <PortfolioListItem
+                title="Mobile Application - Game gallery"
+                link_url="https://snack.expo.io/@hunter99/3-12-18"
+                image_url="https://res.cloudinary.com/crimson-flamingo/image/upload/v1559314998/3105%20portfolio%20screenshots/3105_mobile_screenshot.png"
+            />
 
-            {/* <div>
-                <p>Wine and Dine. Dine and Wine. Strike First. Strike Hard. Show some Mercy. </p>
-            </div> */}
-
-            <h3>Technologies currently learning: </h3>
-            <ul>
-                <li>Web Sockets</li>
-            </ul>
-            <h3>Other Work Samples</h3>
-            <List style={{ 'overflowWrap': 'break-word' }}>
-                {['https://bestversion7.github.io/portfolio/#/',
-                    'https://snack.expo.io/@hunter99/3-12-18',
-                    'https://real-time-instant.herokuapp.com/'].map((item, index) => (
-                        <ListItem key={index}>
-                            <ListItemIcon><ArrowForward /></ListItemIcon>
-                            <ListItemText>
-                                <Link
-                                    href={item}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    title={item}
-                                >{item}</Link>
-                            </ListItemText>
-                        </ListItem>
-                    ))}
-            </List>
+            <PortfolioListItem
+                title="Website - Realtime Chat"
+                link_url="https://real-time-instant.herokuapp.com/"
+                image_url="https://res.cloudinary.com/crimson-flamingo/image/upload/v1559314998/3105%20portfolio%20screenshots/3105_chat_site_screenshot.png"
+            />
+            </section>
             Login to post comments and access a private route <br />
             <button
                 className="btn-regular"

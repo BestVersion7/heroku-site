@@ -1,11 +1,11 @@
 import Slider from 'react-slick'
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
-import {settings} from '../../utilities/carouselSettings'
+import {settings} from '../utilities/carouselSettings'
 import {Card, CardMedia, CardContent, CardActionArea} from '@material-ui/core'
 import {Link} from 'react-router-dom'
 
-const Carousel = () => {
+const DrinkCarousel = () => {
     const [drinks, setDrinks] = useState([])
 
     const fetchDrinks = async () => {
@@ -48,4 +48,4 @@ const Carousel = () => {
     )
 }
 
-export default Carousel
+export default DrinkCarousel
