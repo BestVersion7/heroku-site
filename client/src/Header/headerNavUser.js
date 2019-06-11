@@ -1,23 +1,23 @@
-import React from 'react'
-import {auth} from '../utilities/auth'
-import {NavLink} from 'react-router-dom'
-// import {UserContext} from '../App'
-import {ListItem, ListItemText} from '@material-ui/core'
+import React from "react";
+import { Link } from "react-router-dom";
+import { ListItem, ListItemText } from "@material-ui/core";
+import axios from "axios";
 
 const HeaderNavUser = () => {
-    // const {userData} = useContext(UserContext)
-    // const {picture_url_thumbnail} = userData
-
+    const handleSignout = async () => {
+        await axios.post('/api/user/signout')
+        window.location.reload()
+    }
     return (
         <div>
-            <ListItem button component={NavLink} to="/account">
+            <ListItem button component={Link} to="/account">
                 <ListItemText primary="Account" />
             </ListItem>
-            <ListItem button>
-                <ListItemText primary="Sign out" onClick={auth.signout} />
+            <ListItem button component={Link} to="/">
+                <ListItemText primary="Sign out" onClick={handleSignout} />
             </ListItem>
         </div>
-    )
-}
+    );
+};
 
-export default HeaderNavUser
+export default HeaderNavUser;

@@ -1,11 +1,11 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
 require('dotenv').config()
 const cloudinary = require('cloudinary').v2
+const cookieParser = require('cookie-parser')
 
 const app = express();
 const movieRouter = require('./api/routes/movie')
@@ -18,7 +18,8 @@ app.use(cors())
 app.use(morgan('dev'))
 
 //Bodyparser middleware
-app.use(bodyParser.json())
+app.use(express.json())
+app.use(cookieParser())
 
 //connect database 
 const db = process.env.MONGO_URI

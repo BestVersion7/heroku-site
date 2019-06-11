@@ -5,7 +5,8 @@ const userController = require('../controllers/user')
 const upload = require('../middleware/uploadImage')
 
 router.post('/signup', userController.signup_user)
-router.post('/login', userController.login_user)
+router.post('/signin', userController.signin_user)
+router.post('/signout', userController.signout_user)
 
 router.get('/:username', verifyToken, userController.get_user)
 

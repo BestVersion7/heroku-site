@@ -1,28 +1,30 @@
-import axios from 'axios'
 import jwt from 'jsonwebtoken'
 
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+
 export const auth = {
-    setToken(res) {
-        axios.defaults.headers.Authorization = `Bearer ${res.data.token}`
-        const token = axios.defaults.headers.Authorization
-        localStorage.setItem('jwt_token', token)
-    },
-    getToken() {
-        const token = localStorage.getItem('jwt_token')
-        axios.defaults.headers.Authorization = token
-    },
     getPayloadUsername() {
-        const token = localStorage.getItem('jwt_token').split(" ")[1]
+        const token = getCookie('jwt')
         const {username} = jwt.decode(token)
         return username
     },
     getPayloadId() {
-        const token = localStorage.getItem('jwt_token').split(" ")[1]
+        const token = getCookie('jwt')
         const {_id} = jwt.decode(token)
         return _id
-    },
-    signout() {
-        localStorage.removeItem('jwt_token')
-        window.location.reload()
     }
 }

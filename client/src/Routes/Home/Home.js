@@ -23,11 +23,11 @@ export default () => {
             <DrinkCarousel />
             <SkillListItem
                 area="Front-end"
-                skills={['Reactjs', 'HTML', 'CSS', 'SASS', 'Google Material Design', 'Web sockets', 'Jest', 'Enzyme']}
+                skills={['Reactjs', 'HTML', 'CSS', 'SASS', 'Google Material Design', 'Web sockets', 'Jest/Enzyme', 'Cookies']}
             />
             <SkillListItem
                 area="Back-end"
-                skills={['Nodejs', 'Expressjs', 'MongoDB', 'SQL', 'Web sockets', 'RESTful API', 'Cloudinary']}
+                skills={['Nodejs', 'Expressjs', 'MongoDB', 'SQL', 'Web sockets', 'RESTful API', 'Cloudinary', 'JWT', 'Passport', 'OAuth']}
             />
             <SkillListItem
                 area="Analytics"

@@ -8,7 +8,7 @@ export function PrivateRoute({ component: Component, ...rest }) {
 
   const validateToken = async () => {
     try {
-      await axios.get(`/api/user/${auth.getPayloadUsername()}`, auth.getToken())
+      await axios.get(`/api/user/${auth.getPayloadUsername()}`)
     } catch {
       setSignedIn(false)
     }

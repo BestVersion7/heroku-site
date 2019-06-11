@@ -30,7 +30,7 @@ const App = () => {
   const validateToken = async () => {
     try {
       // retrieve data from username
-      const {data} = await axios.get(`/api/user/${auth.getPayloadUsername()}`, auth.getToken())
+      const {data} = await axios.get(`/api/user/${auth.getPayloadUsername()}`)
       setSignedIn(true)
       setUserData(data)
     } catch {

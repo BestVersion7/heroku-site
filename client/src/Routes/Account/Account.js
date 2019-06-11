@@ -8,10 +8,10 @@ export default () => {
 
     const ShowUserProfilePic = async () => {
         try {
-            const {data} = await axios.get(`api/user/${auth.getPayloadUsername()}`, auth.getToken())
+            const {data} = await axios.get(`api/user/${auth.getPayloadUsername()}`)
             setImage(data.picture_url_thumbnail)              
         } catch(err) {
-            
+            console.error(err)
         }
     }
 
@@ -19,12 +19,10 @@ export default () => {
 
     const handleChangePicture = async e => {
         e.preventDefault()
-        const config = axios.defaults.headers.common['Content-Type'] = 'multipart/form-data'
         const formData = new FormData()
         formData.append('picture', file)       
-        //no need for jwt authentication because it is done in server
         try {
-            await axios.put(`/api/user/${auth.getPayloadId()}`, formData, config)
+            await axios.put(`/api/user/${auth.getPayloadId()}`, formData)
             window.location.reload()
         } catch(err) {
             alert(err)
@@ -43,7 +41,7 @@ export default () => {
                 <button type="submit">Upload</button>
             </form>
             <img src={image} alt="profilepic" />
-            {/* User: {auth.getPayloadUsername()} */}
+            User: {auth.getPayloadUsername()}
         </div>
     )
 }
