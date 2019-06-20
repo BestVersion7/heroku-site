@@ -33,8 +33,7 @@ const DrinkComments = () => {
                     username: userData.username,
                     picture_url_thumbnail: userData.picture_url_thumbnail,
                     comment: newComment
-                },
-                auth.getToken()
+                }
             );
             setNoComment(false);
             setNewComment("");

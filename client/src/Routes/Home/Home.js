@@ -11,7 +11,7 @@ export default () => {
     return (
         <div className="page-container">
             <h3>Welcome to GoldenWine</h3>
-            <i>Last update 06/05/19</i> <br />
+            <i>Last update 20/06/19</i> <br />
             <p>
                 Link to repo: <span> </span>
                 <a href="https://github.com/BestVersion7/heroku-site">

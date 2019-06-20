@@ -11,7 +11,6 @@ const DrinkAll = () => {
     }
     return (
         <div className="page-container">
-        <h2><i>Working on styling and query search ... </i></h2>
             {drinks.map(({
                 _id,
                 name,
