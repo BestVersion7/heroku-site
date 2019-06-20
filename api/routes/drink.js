@@ -5,9 +5,6 @@ const upload = require('../middleware/uploadImage')
 const verifyToken = require('../middleware/verifyToken')
 
 router.get('/popular', drinkController.getPopularDrinks)
-// router.get('/query', drinkController.getDrinkByGroup)
-
-// nested document for crud comments
 router.get('/comments/:id', drinkController.getDrinkComments)
 router.post('/comments/:id', verifyToken, drinkController.postDrinkComment)
 // router.delete('/comments/:id', drinkController.deleteAllComments)
@@ -17,7 +14,6 @@ router.delete('/comments/:id/:commentId', verifyToken, drinkController.deleteDri
 
 router.get('/', drinkController.getDrinks)
 router.post('/', verifyToken, upload.single('drink'), drinkController.createDrink)
-// router.delete('/', drinkController.deleteAll)
 router.delete('/:id', verifyToken, drinkController.deleteOne)
 
 router.put('/:id', verifyToken, drinkController.updateDrinkPopular)

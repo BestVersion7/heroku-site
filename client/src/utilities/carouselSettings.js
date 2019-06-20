@@ -29,7 +29,7 @@ export const settings = {
   dots: false,
   infinite: true,
   slidesToScroll: 1,
-  autoplay: false,
+  autoplay: true,
   arrows: true,
   // nextArrow: <NextArrow />,
   // prevArrow: <PrevArrow />,

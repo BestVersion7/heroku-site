@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import DrinkCarousel from "../../components/DrinkCarousel";
+import DrinksByGroup from "../../components/drinksByGroup";
 
 export default () => {
     const [redirect, setRedirect] = useState(false);
@@ -18,7 +19,12 @@ export default () => {
                     https://github.com/BestVersion7/heroku-site
                 </a>
             </p>
+            <h2>Trending</h2>
             <DrinkCarousel />
+            <h2>MoreDrinks!</h2>
+            <DrinksByGroup category="Wine" group="wine" />
+            <DrinksByGroup category="Beer" group="beer" />
+            <DrinksByGroup category="Champagne" group="champagne" />
             Login to post comments and access a private route <br />
             <button className="btn-regular" onClick={handleClick}>
                 Login

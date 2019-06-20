@@ -1,33 +1,31 @@
 // will split this code in multiple components
 
-import React, { useContext, useState, useEffect } from "react";
-import { DrinkIDContext } from "./drinkParams";
-import { UserContext } from "../../App";
+import React, { useState, useContext } from "react";
+import { UserContext } from "../App";
+import { Button, Avatar } from "@material-ui/core";
+import { formatDate } from "../utilities/formatDate";
 import axios from "axios";
-import { auth } from "../../utilities/auth";
-import { Button, CircularProgress, Avatar } from "@material-ui/core";
-import { formatDate } from "../../utilities/formatDate";
 
 const NoComments = () => {
     return <h2>No Comments Yet. Be the first to post!</h2>;
 };
 
-const DrinkComments = () => {
+const DrinkComments = ({ id, comments }) => {
     // destructure the array
-    const [drink] = useContext(DrinkIDContext);
     const { userData, signedIn, setSignedIn } = useContext(UserContext);
-    const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState("");
     // this is to rerender componentwillupdate
     const [subscription, setSubscription] = useState(false);
     const [noComment, setNoComment] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
 
     const handleAddComment = async e => {
         e.preventDefault();
         try {
+            if(!newComment) {
+                return
+            }
             await axios.post(
-                `/api/drinks/comments/${drink._id}`,
+                `/api/drinks/comments/${id}`,
                 // put the state in the nested subdocument to map
                 {
                     username: userData.username,
@@ -43,27 +41,6 @@ const DrinkComments = () => {
             setSignedIn(!signedIn);
         }
     };
-
-    const getComments = async () => {
-        try {
-            const { data } = await axios.get(
-                `/api/drinks/comments/${drink._id}`
-            );
-            if (data.comments.length === 0) {
-                return setNoComment(true);
-            }
-            const allComments = data.comments;
-            setComments(allComments);
-        } catch (err) {
-            setIsLoading(true);
-        }
-    };
-
-    if (isLoading) return <CircularProgress />;
-
-    useEffect(() => {
-        getComments();
-    }, [subscription]);
 
     return (
         <div>
