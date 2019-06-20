@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { CredentialFail } from "../../utilities/credentialModal";
-import { auth } from "../../utilities/auth";
 import { NavLink, Redirect } from "react-router-dom";
 import axios from "axios";
 import { Button } from "@material-ui/core";
