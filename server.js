@@ -48,14 +48,14 @@ const sitemap = sm.createSitemap({
     hostname: "http://goldenwine.herokuapp.com",
     cacheTime: 600000, // 600 sec - cache purge period
     urls: [
-        { url: "/page-1/", changefreq: "daily", priority: 0.3 },
-        { url: "/page-2/", changefreq: "monthly", priority: 0.7 }
+        { url: "/signin/", changefreq: "monthly", priority: 0.5 },
+        { url: "/signup/", changefreq: "monthly", priority: 0.5 }
     ]
 });
 
 // sitemap
 app.get("/sitemap.xml", (req, res) => {
-    sitemap.toXML(function(err, xml) {
+    sitemap.toXML((err, xml) => {
         if (err) {
             return res.status(500).end();
         }
